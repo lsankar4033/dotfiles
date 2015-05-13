@@ -41,3 +41,4 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 0
 
 source "$HOME/.liftoff_profile"
+source "$HOME/.local_profile"

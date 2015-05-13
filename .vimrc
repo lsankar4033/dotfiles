@@ -191,5 +191,9 @@ nnoremap <leader>f :TagbarToggle<CR>
 "au Filetype go nmap <leader>g <Plug>(go-run)
 nmap <leader>] :GoDef<CR>
 
+" Add line break indicator
 set colorcolumn=110
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" allow yank to copy to system clipboard
+set clipboard=unnamed
