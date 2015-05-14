@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/lakshmansankar/.vim/bundle'
+let g:netrw_dirhist_2='/Users/lakshmansankar/git/liftoff'
+let g:netrw_dirhist_3='/Users/lakshmansankar/.vim/bundle/vim-fireplace/plugin/fireplace'
+let g:netrw_dirhist_4='/Users/lakshmansankar/git/liftoff/postgres_db/cohort_db'
+let g:netrw_dirhist_5='/Users/lakshmansankar/git/liftoff/.git'
+let g:netrw_dirhist_6='/Users/lakshmansankar/.vim/tmp/swap'
