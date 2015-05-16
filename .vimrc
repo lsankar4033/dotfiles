@@ -1,7 +1,8 @@
 " No brainers
 execute pathogen#infect()
 filetype plugin indent on
-syntax on
+
+syntax enable
 set nocompatible
 set number
 
@@ -11,34 +12,6 @@ let mapleader = ","
 " Editing this file itself
 nmap <leader>v :vsp ~/.vimrc<cr>
 nmap <leader>d :so $MYVIMRC<cr>
-
-" For fireplace print to buffer
-function! s:printbuf()
-  echo "HEY"
-endfunction
-nnoremap <silent> <Plug>FireplacePrintBuf :<C-U>call <SID>printbuf()<CR>
-nmap <buffer> cpv <Plug>FireplacePrintBuf
-
-" TODO(lakshman) - properly print to a separate window that I can set the syntax highlighting on
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-function! s:RunShellCommand(cmdline)
-  echo a:cmdline
-  let expanded_cmdline = a:cmdline
-  for part in split(a:cmdline, ' ')
-    if part[0] =~ '\v[%#<]'
-      let expanded_part = fnameescape(expand(part))
-      let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-    endif
-  endfor
-  botright new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:    ' . a:cmdline)
-  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-  call setline(3,substitute(getline(2),'.','=','g'))
-  execute '$read !'. expanded_cmdline
-  setlocal nomodifiable
-  1
-endfunction
 
 " Text-wrapping stuff. (Also check out my cursorcolumn setting in .gvimrc.)
 set textwidth=110 " 80-width lines is for 1995
@@ -51,9 +24,6 @@ set history=1000 "Longer history
 " Highlight search but allow toggle hl off with space
 set hlsearch
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" Just autoindent
-set autoindent
 
 " Tab settings.  two spaces and >>, << are the same as tabs
 set smarttab
@@ -70,9 +40,9 @@ set title " Sets title of window to filename
 
 set laststatus=2 " last window always has a status line
 
-
 set ignorecase
 set smartcase
+set autoindent
 
 set backspace=indent,eol,start
 set linespace=3
@@ -128,14 +98,62 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" Always keep current window a certain size and make the window min just enough for a reference
+set winheight=30
+set winminheight=5
+
+" resize window
+noremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" Add line break indicator
+set colorcolumn=110
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey
+
+" allow yank to copy to system clipboard
+set clipboard=unnamed
+
 "Make Omnit-complete work better
 "set completeopt=longest,menuone
 "set completeopt=menuone
 
-"control p settigs
+" Ensure the temp dirs exist
+call system("mkdir -p ~/.vim/tmp/swap")
+call system("mkdir -p ~/.vim/tmp/backup")
+call system("mkdir -p ~/.vim/tmp/undo")
+
+" Change where we store swap/undo files
+set dir=~/.vim/tmp/swap/
+set backupdir=~/.vim/tmp/backup/
+set undodir=~/.vim/tmp/undo/
+
+" Don't back up temp files
+set backupskip=/tmp/*,/private/tmp/*
+
+" ----------------------------------------- Plugin Settings ----------------------------------------------
+
+" Plugins assumed:
+" - ag.vim
+" - nerdtree
+" - vim-ansible-yaml
+" - vim-fireplace
+" - vim-indexed-search
+" - vim-lucius
+" - ctrlp.vim
+" - rainbow_parentheses.vim
+" - vim-clojure-static
+" - vim-fugitive
+" - vim-jdaddy
+" - vim-markdown
+" - gundo.vim
+" - tagbar
+" - vim-go
+" - vim-json
+" - vim-ruby
+
+" Ctrl P
 let g:ctrlp_map = '<leader>r'
 let g:ctrlp_cmd = 'CtrlP'
-"let g:ctrlp_root_markers = ['Gemfile']
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 5000000
 "let g:ctrlp_open_new_file = 'r'
@@ -155,33 +173,20 @@ let g:clojure_fuzzy_indent_patterns .= ",fact,facts"                            
 let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                        " Lobos
 let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc,->"              " Misc
 
+" NERDTree
 map <C-n> :NERDTreeFind<CR>
 
-" Ensure the temp dirs exist
-call system("mkdir -p ~/.vim/tmp/swap")
-call system("mkdir -p ~/.vim/tmp/backup")
-call system("mkdir -p ~/.vim/tmp/undo")
+" Rainbow parens
+" TODO - how can i source my vimrc while maintaining these
+augroup rainbow_parentheses
+  autocmd!
+  autocmd Filetype clojure RainbowParenthesesActivate
+  autocmd Syntax * RainbowParenthesesLoadRound
+  autocmd Syntax * RainbowParenthesesLoadSquare
+  autocmd Syntax * RainbowParenthesesLoadBraces
+augroup end
 
-" Change where we store swap/undo files
-set dir=~/.vim/tmp/swap/
-set backupdir=~/.vim/tmp/backup/
-set undodir=~/.vim/tmp/undo/
-
-" Don't back up temp files
-set backupskip=/tmp/*,/private/tmp/*
-
-" rainbow parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" Coffeescript settings (related to vim-coffee-script plugin)
-vmap <leader>co :CoffeeCompile<CR>
-
-map <leader>e :!ruby %<CR>
-
-" silver surfing
+" Ag
 nnoremap <leader>a :Ag
 
 " Tagbar
@@ -190,10 +195,3 @@ nnoremap <leader>f :TagbarToggle<CR>
 " Go
 "au Filetype go nmap <leader>g <Plug>(go-run)
 nmap <leader>] :GoDef<CR>
-
-" Add line break indicator
-set colorcolumn=110
-hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-
-" allow yank to copy to system clipboard
-set clipboard=unnamed
