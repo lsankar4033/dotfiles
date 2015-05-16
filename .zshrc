@@ -27,6 +27,7 @@ source $ZSH/oh-my-zsh.sh
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
 
+alias gcl="git clone"
 alias gc="git commit"
 alias gr="git rebase"
 alias gp="git pull"
