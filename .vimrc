@@ -88,8 +88,8 @@ set statusline+=%{strftime(\"%a\ %y/%m/%d\ %H:%M:%S\",getftime(expand(\"%:p\")))
 set statusline+=%-7.(col:%c%)\ %<%P        " offset
 
 " Show extra whitespace
-hi ExtraWhitespace guibg=LightGray
-hi ExtraWhitespace ctermbg=LightGray
+hi ExtraWhitespace guibg=DarkGray
+hi ExtraWhitespace ctermbg=DarkGray
 match ExtraWhitespace /\s\+$/
 
 " automatically remove extra whitespace
@@ -146,6 +146,10 @@ set backupskip=/tmp/*,/private/tmp/*
 " - vim-go
 " - vim-json
 " - vim-ruby
+" - vim-surround
+" - paredit.vim
+" - nerdcommenter
+" - supertab
 
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
@@ -191,3 +195,10 @@ nnoremap <leader>f :TagbarToggle<CR>
 " Go
 "au Filetype go nmap <leader>g <Plug>(go-run)
 nmap <leader>] :GoDef<CR>
+
+" NerdCommenter
+"comment out a block of code
+nmap <leader>cz <C-v>%<Leader>c<space>
+
+" Gundo
+nnoremap <leader>g :GundoToggle<CR>
