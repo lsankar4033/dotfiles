@@ -171,7 +171,9 @@ let g:clojure_fuzzy_indent_patterns .= ",clone-for"                             
 let g:clojure_fuzzy_indent_patterns .= ",select.*,insert.*,update.*,delete.*,with.*,subselect.*,in.*,upsert" " Korma
 let g:clojure_fuzzy_indent_patterns .= ",fact,facts"                                 " Midje
 let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                        " Lobos
-let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc,->"              " Misc
+let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc"              " Misc
+let g:clojure_fuzzy_indent_patterns .= "->"
+let g:clojure_fuzzy_indent_patterns .= "->>"
 
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
