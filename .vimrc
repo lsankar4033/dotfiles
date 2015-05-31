@@ -110,8 +110,7 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set clipboard=unnamed
 
 "Make Omnit-complete work better
-"set completeopt=longest,menuone
-"set completeopt=menuone
+set completeopt=longest,menuone
 
 " Ensure the temp dirs exist
 call system("mkdir -p ~/.vim/tmp/swap")
