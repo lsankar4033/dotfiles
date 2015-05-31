@@ -11,7 +11,6 @@ let mapleader = ","
 
 " Editing this file itself
 nmap <leader>v :vsp ~/.vimrc<cr>
-nmap <leader>d :so $MYVIMRC<cr>
 
 " Text-wrapping stuff. (Also check out my cursorcolumn setting in .gvimrc.)
 set textwidth=110 " 80-width lines is for 1995
@@ -124,6 +123,8 @@ set undodir=~/.vim/tmp/undo/
 
 " Don't back up temp files
 set backupskip=/tmp/*,/private/tmp/*
+
+nmap <leader>d i#_(do<CR>
 
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
