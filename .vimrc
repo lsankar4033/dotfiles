@@ -126,6 +126,9 @@ set backupskip=/tmp/*,/private/tmp/*
 
 nmap <leader>d i#_(do<CR>
 
+" Run ruby files
+nmap <leader>b :!ruby %<CR>
+
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
 " Plugins assumed:
