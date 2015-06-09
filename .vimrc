@@ -175,8 +175,6 @@ let g:clojure_fuzzy_indent_patterns .= ",select.*,insert.*,update.*,delete.*,wit
 let g:clojure_fuzzy_indent_patterns .= ",fact,facts"                                 " Midje
 let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                        " Lobos
 let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc"              " Misc
-let g:clojure_fuzzy_indent_patterns .= "->"
-let g:clojure_fuzzy_indent_patterns .= "->>"
 
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
@@ -207,3 +205,13 @@ nmap <leader>cz <C-v>%<Leader>c<space>
 
 " Gundo
 nnoremap <leader>g :GundoToggle<CR>
+
+" Paredit
+function ToggleParedit()
+  if g:paredit_mode
+    let g:paredit_mode=0
+  else
+    let g:paredit_mode=1
+  endif
+endfunction
+nnoremap <leader>p :call ToggleParedit()<CR><CR>
