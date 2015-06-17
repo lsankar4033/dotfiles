@@ -100,10 +100,6 @@ autocmd BufWritePre * :call TrimWhiteSpace()
 autocmd FileWritePre * :call TrimWhitespace()
 autocmd FileAppendPre * :call TrimWhitespace()
 
-" resize window
-noremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
-
 " Add line break indicator
 set colorcolumn=110
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
