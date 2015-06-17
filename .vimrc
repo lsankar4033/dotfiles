@@ -8,6 +8,7 @@ set number
 
 " maps leader to ','
 let mapleader = ","
+noremap \ ,
 
 " Editing this file itself
 nmap <leader>v :vsp ~/.vimrc<cr>
@@ -92,10 +93,12 @@ hi ExtraWhitespace ctermbg=DarkGray
 match ExtraWhitespace /\s\+$/
 
 " automatically remove extra whitespace
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+autocmd BufWritePre * :call TrimWhiteSpace()
+autocmd FileWritePre * :call TrimWhitespace()
+autocmd FileAppendPre * :call TrimWhitespace()
 
 " resize window
 noremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -128,6 +131,10 @@ nmap <leader>d i#_(do<CR>
 
 " Run ruby files
 nmap <leader>b :!ruby %<CR>
+
+" Faster scrolling
+nmap <C-h> 5j
+nmap <C-y> 5k
 
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
@@ -215,3 +222,6 @@ function ToggleParedit()
   endif
 endfunction
 nnoremap <leader>p :call ToggleParedit()<CR><CR>
+
+" Python
+let g:pymode_run_bind="<C-p>"

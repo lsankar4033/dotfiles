@@ -27,11 +27,11 @@ source $ZSH/oh-my-zsh.sh
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
 
-alias gcl="git clone"
-alias gc="git commit"
-alias gr="git rebase"
-alias gp="git pull"
-alias gpu="git push"
+alias gclone="git clone"
+alias gcommit="git commit"
+alias grebase="git rebase"
+alias gpull="git pull"
+alias gpush="git push"
 
 # add ssh identities to the ssh agent
 ssh-add
