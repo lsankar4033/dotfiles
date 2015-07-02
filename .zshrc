@@ -31,7 +31,13 @@ alias gclone="git clone"
 alias gcommit="git commit"
 alias grebase="git rebase"
 alias gpull="git pull"
+alias gpr="git pull --rebase"
 alias gpush="git push"
+alias gdiff="git diff"
+alias glog="git log"
+alias gstatus="git status"
+
+alias tmuxls="tmux list-sessions"
 
 # add ssh identities to the ssh agent
 ssh-add
