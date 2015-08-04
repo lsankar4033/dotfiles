@@ -35,9 +35,12 @@ alias gpr="git pull --rebase"
 alias gpush="git push"
 alias gdiff="git diff"
 alias glog="git log"
-alias gstatus="git status"
+alias gstat="git status"
+alias grh="git reset --hard"
 
 alias tmuxls="tmux list-sessions"
+
+alias hgrep="history |grep"
 
 # add ssh identities to the ssh agent
 ssh-add
