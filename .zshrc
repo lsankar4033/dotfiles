@@ -6,7 +6,7 @@ export ZSH=/Users/lakshmansankar/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git lein)
+plugins=(git lein colored-man colorize cp)
 
 PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
