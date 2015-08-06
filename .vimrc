@@ -235,3 +235,6 @@ nnoremap <leader>p :call ToggleParedit()<CR><CR>
 
 " Python
 let g:pymode_run_bind="<C-p>"
+
+" vim-fireplace
+nnoremap <leader>e :Last<CR>
