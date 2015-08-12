@@ -6,20 +6,15 @@ syntax enable
 set nocompatible
 set number
 
-" maps leader to ','
+" maps leader to ',' and maps '\' to ',' for char search
 let mapleader = ","
 noremap \ ,
-
-" Editing this file itself
-nmap <leader>v :vsp ~/.vimrc<cr>
 
 " Text-wrapping stuff. (Also check out my cursorcolumn setting in .gvimrc.)
 set textwidth=110 " 80-width lines is for 1995
 let &wrapmargin= &textwidth
 set formatoptions=croql " Now it shouldn't hard-wrap long lines as you're typing (annoying), but you can gq
                         " as expected.
-
-set history=1000 "Longer history
 
 " Highlight search but allow toggle hl off with space
 set hlsearch
@@ -37,15 +32,18 @@ set wildmenu
 set wildmode=list:longest
 set scrolloff=10 " This keeps 10 lines of context when scrolling
 set title " Sets title of window to filename
-
 set laststatus=2 " last window always has a status line
-
 set ignorecase
 set smartcase
 set autoindent
 
+" Better backspacing
 set backspace=indent,eol,start
+
+" Space between lines for clarity
 set linespace=3
+
+" Highlighted incremental search
 set incsearch
 
 " Colorscheme
@@ -92,7 +90,7 @@ hi ExtraWhitespace guibg=DarkGray
 hi ExtraWhitespace ctermbg=DarkGray
 match ExtraWhitespace /\s\+$/
 
-" automatically remove extra whitespace
+" Automatically remove extra whitespace
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
@@ -104,11 +102,8 @@ autocmd FileAppendPre * :call TrimWhitespace()
 set colorcolumn=110
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 
-" allow yank to copy to system clipboard
+" Allow yank to copy to system clipboard
 set clipboard=unnamed
-
-"Make Omnit-complete work better
-set completeopt=longest,menuone
 
 " Ensure the temp dirs exist
 call system("mkdir -p ~/.vim/tmp/swap")
@@ -122,13 +117,6 @@ set undodir=~/.vim/tmp/undo/
 
 " Don't back up temp files
 set backupskip=/tmp/*,/private/tmp/*
-
-nmap <leader>d i#_(do<CR>
-
-nmap <leader>l i(let [<CR>
-
-" Run ruby files
-nmap <leader>b :!ruby %<CR>
 
 " Faster scrolling
 nmap <C-h> 5j
@@ -176,7 +164,6 @@ let g:ctrlp_map = '<leader>r'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 5000000
-"let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_follow_symlinks = 1
 
 let g:ctrlp_custom_ignore = {
@@ -192,6 +179,9 @@ let g:clojure_fuzzy_indent_patterns .= ",select.*,insert.*,update.*,delete.*,wit
 let g:clojure_fuzzy_indent_patterns .= ",fact,facts"                                 " Midje
 let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                        " Lobos
 let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc"              " Misc
+
+" Quick do sandboxes for clojure.  Assumes paredit
+nmap <leader>d i#_(do<CR>
 
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
@@ -216,12 +206,8 @@ nnoremap <leader>f :TagbarToggle<CR>
 "au Filetype go nmap <leader>g <Plug>(go-run)
 nmap <leader>] :GoDef<CR>
 
-" NerdCommenter
-"comment out a block of code
+" Comment out a block of code
 nmap <leader>cz <C-v>%<Leader>c<space>
-
-" Gundo
-nnoremap <leader>g :GundoToggle<CR>
 
 " Paredit
 function ToggleParedit()
@@ -236,5 +222,5 @@ nnoremap <leader>p :call ToggleParedit()<CR><CR>
 " Python
 let g:pymode_run_bind="<C-p>"
 
-" vim-fireplace
+" Vim-fireplace.  View last buffer's contents
 nnoremap <leader>e :Last<CR>
