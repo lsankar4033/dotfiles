@@ -2,7 +2,6 @@
 execute pathogen#infect()
 filetype plugin indent on
 
-syntax enable
 set nocompatible
 set number
 
@@ -18,7 +17,7 @@ set formatoptions=croql " Now it shouldn't hard-wrap long lines as you're typing
 
 " Highlight search but allow toggle hl off with space
 set hlsearch
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Tab settings.  two spaces and >>, << are the same as tabs
 set smarttab
@@ -134,6 +133,12 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
+" Set '.' to be a keyword in word parsing
+set iskeyword-=.
+
+" Go back a file (rather than just a jump spot)
+nmap <C-b> :bf<CR>
+
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
 " Plugins assumed:
@@ -158,6 +163,7 @@ vnoremap <silent> # :<C-U>
 " - paredit.vim
 " - nerdcommenter
 " - supertab
+" - UltiSnips
 
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
@@ -185,6 +191,8 @@ nmap <leader>d i#_(do<CR>
 
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
+
+syntax enable
 
 " Rainbow parens
 " TODO - how can i source my vimrc while maintaining these

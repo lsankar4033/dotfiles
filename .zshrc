@@ -27,6 +27,7 @@ source $ZSH/oh-my-zsh.sh
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
 
+# git shortcuts
 alias gclone="git clone"
 alias gcommit="git commit"
 alias grebase="git rebase"
@@ -37,8 +38,14 @@ alias gdiff="git diff"
 alias glog="git log"
 alias gstat="git status"
 alias grh="git reset --hard"
+alias gcm="git checkout master"
+alias grm="git rebase master"
 
-alias tmuxls="tmux list-sessions"
+# tmux shortcuts
+alias tls="tmux list-sessions"
+alias tattach="tmux attach -t"
+alias tnew="tmux new-session -s"
+alias tkill="tmux kill-session -t"
 
 alias hgrep="history |grep"
 
@@ -50,3 +57,6 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 0
 
 source "$HOME/.local_profile"
+
+# to not screw with tmux window names
+DISABLE_AUTO_TITLE=true
