@@ -40,6 +40,10 @@ alias gstat="git status"
 alias grh="git reset --hard"
 alias gcm="git checkout master"
 alias grm="git rebase master"
+alias gshow="git show"
+alias gb="git branch"
+alias gbd="git branch -D"
+alias gcb="git checkout -b"
 
 # tmux shortcuts
 alias tls="tmux list-sessions"
@@ -47,7 +51,11 @@ alias tattach="tmux attach -t"
 alias tnew="tmux new-session -s"
 alias tkill="tmux kill-session -t"
 
+# Quick history search
 alias hgrep="history |grep"
+
+# Clear out vim swap
+alias cs="rm ~/.vim/tmp/swap/*.swp"
 
 # add ssh identities to the ssh agent
 ssh-add
