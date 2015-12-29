@@ -83,14 +83,6 @@ hi ExtraWhitespace guibg=DarkGray
 hi ExtraWhitespace ctermbg=DarkGray
 match ExtraWhitespace /\s\+$/
 
-" Automatically remove extra whitespace
-function! TrimWhiteSpace()
-  %s/\s\+$//e
-endfunction
-autocmd BufWritePre * :call TrimWhiteSpace()
-autocmd FileWritePre * :call TrimWhitespace()
-autocmd FileAppendPre * :call TrimWhitespace()
-
 " Add line break indicator
 set colorcolumn=110
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
@@ -132,5 +124,3 @@ set iskeyword-=.
 
 " Go back a file (rather than just a jump spot)
 nmap <C-b> :bf<CR>
-
-
