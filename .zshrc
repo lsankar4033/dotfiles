@@ -28,22 +28,20 @@ alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
 
 # git shortcuts
-alias gclone="git clone"
-alias gcommit="git commit"
-alias grebase="git rebase"
-alias gpull="git pull"
+alias gc="git commit"
 alias gpr="git pull --rebase"
 alias gpush="git push"
-alias gdiff="git diff"
-alias glog="git log"
-alias gstat="git status"
-alias grh="git reset --hard"
+alias gd="git diff"
+alias gl="git log"
 alias gcm="git checkout master"
 alias grm="git rebase master"
-alias gshow="git show"
+alias gst='git status'
+alias gsh="git show"
 alias gb="git branch"
 alias gbd="git branch -D"
 alias gcb="git checkout -b"
+alias ga="git add"
+alias gaa="git add -A"
 
 # tmux shortcuts
 alias tls="tmux list-sessions"
@@ -68,3 +66,6 @@ source "$HOME/.local_profile"
 
 # to not screw with tmux window names
 DISABLE_AUTO_TITLE=true
+
+# Use vim as the editor for git commits, etc.
+git config --global core.editor "vim"
