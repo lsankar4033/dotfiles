@@ -5,6 +5,9 @@ filetype plugin indent on
 set nocompatible
 set number
 
+" Causes files edited outside of vim to be re-read within vim automatically
+set autoread
+
 " maps leader to ',' and maps '\' to ',' for char search
 let mapleader = ","
 noremap \ ,
@@ -84,6 +87,9 @@ set statusline+=%=                            " right align
 set statusline+=%{strftime(\"%a\ %y/%m/%d\ %H:%M:%S\",getftime(expand(\"%:p\")))}\  "time
 set statusline+=%-7.(col:%c%)\ %<%P        " offset
 
+" To allow multi-buffer argdo. Basically this causes abandoned buffers to be 'hidden' instead of unloaded
+set hidden
+
 " Show extra whitespace
 hi ExtraWhitespace guibg=DarkGray
 hi ExtraWhitespace ctermbg=DarkGray
@@ -154,7 +160,6 @@ nmap <C-b> :bf<CR>
 " - vim-fugitive
 " - vim-jdaddy
 " - vim-markdown
-" - gundo.vim
 " - tagbar
 " - vim-go
 " - vim-json
@@ -232,3 +237,6 @@ let g:pymode_run_bind="<C-p>"
 
 " Vim-fireplace.  View last buffer's contents
 nnoremap <leader>e :Last<CR>
+
+" Slamhound
+nnoremap <leader>sh :Slamhound<CR>
