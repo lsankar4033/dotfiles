@@ -43,6 +43,9 @@ alias gcb="git checkout -b"
 alias ga="git add"
 alias gaa="git add -A"
 
+# tig shortcuts
+alias tst="tig status"
+
 # tmux shortcuts
 alias tls="tmux list-sessions"
 alias tattach="tmux attach -t"
