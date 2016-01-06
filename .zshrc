@@ -58,6 +58,10 @@ alias hgrep="history |grep"
 # Clear out vim swap
 alias cs="rm ~/.vim/tmp/swap/*.swp"
 
+# Drip
+alias dps="drip ps"
+alias dkill="drip kill"
+
 # add ssh identities to the ssh agent
 ssh-add
 
