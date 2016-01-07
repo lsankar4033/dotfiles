@@ -76,3 +76,7 @@ DISABLE_AUTO_TITLE=true
 
 # Use vim as the editor for git commits, etc.
 git config --global core.editor "vim"
+
+alias als="aws s3 ls"
+alias acp="aws s3 cp"
+alias amv="aws s3 mv"
