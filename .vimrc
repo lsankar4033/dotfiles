@@ -178,7 +178,7 @@ let g:ctrlp_max_files = 5000000
 let g:ctrlp_follow_symlinks = 1
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|target)$',
+  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl)$',
   \ 'file': '\.class$',
   \ }
 
