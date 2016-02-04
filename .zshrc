@@ -17,10 +17,13 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 # rbenv
 eval "$(rbenv init -)"
-PATH="$PATH:/Users/lakshmansankar/.rbenv/shims"
+export PATH="$PATH:/Users/lakshmansankar/.rbenv/shims"
 
 # go
-PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
+
+# android platform-tools
+export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/platform-tools"
 
 source $ZSH/oh-my-zsh.sh
 
