@@ -240,3 +240,6 @@ nnoremap <leader>e :Last<CR>
 
 " Slamhound
 nnoremap <leader>sh :Slamhound<CR>
+
+" Piggieback node repl
+nnoremap <leader>n :Piggieback (cljs.repl.node/repl-env)<CR>
