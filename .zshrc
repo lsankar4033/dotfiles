@@ -25,7 +25,12 @@ export PATH="$PATH:/usr/local/go/bin"
 # android platform-tools
 export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/platform-tools"
 
-source $ZSH/oh-my-zsh.sh
+# general repos
+export REPOS="$HOME/git"
+alias repos='cd $REPOS'
+
+# thought docs
+alias tdoc='cd $REPOS/thought-docs'
 
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
@@ -72,8 +77,6 @@ ssh-add
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 0
 
-source "$HOME/.local_profile"
-
 # to not screw with tmux window names
 DISABLE_AUTO_TITLE=true
 
@@ -83,3 +86,8 @@ git config --global core.editor "vim"
 alias als="aws s3 ls"
 alias acp="aws s3 cp"
 alias amv="aws s3 mv"
+
+
+source $ZSH/oh-my-zsh.sh
+source "$HOME/.local_profile"
+source "$HOME/.liftoff_profile"
