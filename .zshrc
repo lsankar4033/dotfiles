@@ -91,3 +91,7 @@ alias amv="aws s3 mv"
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.local_profile"
 source "$HOME/.liftoff_profile"
+
+# Set file descriptor limit to 500000
+sudo launchctl limit maxfiles 500000 500000
+ulimit -n 500000
