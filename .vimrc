@@ -244,6 +244,3 @@ nnoremap <leader>sh :Slamhound<CR>
 
 " Piggieback node repl
 nnoremap <leader>n :Piggieback (cljs.repl.node/repl-env)<CR>
-
-" Faster update for gitgutter
-set updatetime=250

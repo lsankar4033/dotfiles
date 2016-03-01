@@ -95,3 +95,5 @@ source "$HOME/.liftoff_profile"
 # Set file descriptor limit to 500000
 sudo launchctl limit maxfiles 500000 500000
 ulimit -n 500000
+
+alias rstudio='open -a RStudio'
