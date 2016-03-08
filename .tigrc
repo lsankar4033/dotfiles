@@ -1,1 +1,1 @@
-/Users/lakshmansankar/.tigrc
+bind status D !rm %(file)
