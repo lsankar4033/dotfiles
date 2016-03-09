@@ -25,13 +25,14 @@
     ido-ubiquitous
     rainbow-delimiters
     tagedit
-    magit ;; TODO check this out
+    magit     
     markdown-mode
     evil
     evil-leader
     neotree
     ag
-    fill-column-indicator))
+    fill-column-indicator
+    auto-complete))
 
 ;; Set up exec-path-from-shell on osx
 (if (eq system-type 'darwin)
@@ -54,6 +55,9 @@
 ;; Evil mode
 (evil-mode 1)
 
+;; Auto-complete
+(ac-config-default)
+
 ;; Sets up exec-path-from shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
@@ -67,6 +71,8 @@
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 (load "navigation.el")
+
+(evil-leader/set-key "b" 'switch-to-buffer)
 
 ;; These customizations change the way emacs looks and disable/enable
 ;; some user interface elements
@@ -87,6 +93,14 @@
 ;; TODO validate
 (load "setup-clojure.el")
 (load "setup-js.el")
+
+;; Clojure specific bindings
+;; cider refcard here: https://github.com/clojure-emacs/cider/blob/master/doc/cider-refcard.pdf
+;; TODO cljs bindings
+(evil-leader/set-key-for-mode 'clojure-mode "c" 'cider-jack-in)
+(evil-leader/set-key-for-mode 'clojure-mode "e" 'cider-eval-last-sexp)
+(evil-leader/set-key-for-mode 'clojure-mode "d" 'cider-doc)
+(evil-leader/set-key-for-mode 'clojure-mode "f" 'cider-load-file)
 
 ;; Markdown mode
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
