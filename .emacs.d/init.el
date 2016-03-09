@@ -60,6 +60,10 @@
   (exec-path-from-shell-copy-envs
    '("PATH")))
 
+(evil-leader/set-key "g" 'magit-status)
+
+;; TODO inline the below items
+
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 (load "navigation.el")
