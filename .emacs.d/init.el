@@ -9,9 +9,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
-;; Load and activate emacs packages. Do this first so that the
-;; packages are loaded before you start trying to modify them.
-;; This also sets the load path.
 (package-initialize)
 
 ;; Download the ELPA archive description if needed.
@@ -20,9 +17,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; The packages you want installed. You can also install these
-;; manually with M-x package-install
-;; Add in your own as you wish:
 (defvar my-packages
   '(paredit
     clojure-mode 
@@ -39,14 +33,7 @@
     ag
     fill-column-indicator))
 
-;; On OS X, an Emacs instance started from the graphical user
-;; interface will have a different environment than a shell in a
-;; terminal window, because OS X does not run a shell during the
-;; login. Obviously this will lead to unexpected results when
-;; calling external utilities like make from Emacs.
-;; This library works around this problem by copying important
-;; environment variables from the user's shell.
-;; https://github.com/purcell/exec-path-from-shell
+;; Set up exec-path-from-shell on osx
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
 
@@ -58,8 +45,6 @@
 ;; Customization
 ;;;;
 
-;; Add a directory to our load path so that when you `load` things
-;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 ;; Evil leader
@@ -69,10 +54,11 @@
 ;; Evil mode
 (evil-mode 1)
 
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
-;; TODO - validate
-(load "shell-integration.el")
+;; Sets up exec-path-from shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs
+   '("PATH")))
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
