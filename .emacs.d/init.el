@@ -19,13 +19,13 @@
 
 (defvar my-packages
   '(paredit
-    clojure-mode 
+    clojure-mode
     clojure-mode-extra-font-locking
     cider
     ido-ubiquitous
     rainbow-delimiters
     tagedit
-    magit     
+    magit
     markdown-mode
     evil
     evil-leader
@@ -55,6 +55,14 @@
 ;; Evil mode
 (evil-mode 1)
 
+;; Magit w/ evil
+(evil-leader/set-key "g" 'magit-status) 
+;; TODO determine a good way to get evil mode bindings in magit
+;;(evil-set-initial-state 'magit-status-mode 'normal)
+;; (evil-define-key 'normal magit-status-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section) 
+
 ;; Auto-complete
 (ac-config-default)
 
@@ -63,8 +71,6 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
    '("PATH")))
-
-(evil-leader/set-key "g" 'magit-status)
 
 ;; TODO inline the below items
 
@@ -97,10 +103,19 @@
 ;; Clojure specific bindings
 ;; cider refcard here: https://github.com/clojure-emacs/cider/blob/master/doc/cider-refcard.pdf
 ;; TODO cljs bindings
-(evil-leader/set-key-for-mode 'clojure-mode "c" 'cider-jack-in)
-(evil-leader/set-key-for-mode 'clojure-mode "e" 'cider-eval-last-sexp)
-(evil-leader/set-key-for-mode 'clojure-mode "d" 'cider-doc)
-(evil-leader/set-key-for-mode 'clojure-mode "f" 'cider-load-file)
+(evil-leader/set-key-for-mode 'clojure-mode
+  "c" 'cider-jack-in
+  "e" 'cider-eval-last-sexp
+  "d" 'cider-doc
+  "f" 'cider-load-file)
+
+;; Org mode bindings
+(evil-leader/set-key-for-mode 'org-mode
+  "t"  'org-show-todo-tree) 
+
+;; Org mode TODO keywords
+(setq org-todo-keywords 
+      '((sequence "WAITING" "TODO" "|" "DONE" "DELEGATED")))
 
 ;; Markdown mode
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
