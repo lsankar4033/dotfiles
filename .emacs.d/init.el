@@ -138,6 +138,8 @@
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
+(setq create-lockfiles nil) ; don't need lockfiles when editing
+
 ;;;;
 ;; 4. Package Specific Customization
 ;;
