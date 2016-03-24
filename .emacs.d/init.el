@@ -1,170 +1,179 @@
+;; The structure of this configuration is as follows:
+;; 1. package management
+;; 2. initialization of evil/evil-leader. many of the items in the later steps utilize these
+;; 3. generic customization
+;; 4. package specific stuff. most of this should be extracted into other files
+
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'utils)
+
 ;;;;
-;; Packages
+;; 1. Package Management
 ;;;;
 
 ;; Define package repositories
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-
 (package-initialize)
-
-;; Download the ELPA archive description if needed.
-;; This informs Emacs about the latest versions of all packages, and
-;; makes them available for download.
-(when (not package-archive-contents)
+(when (not package-archive-contents) ; refresh package archives
   (package-refresh-contents))
 
+;; Install all of these packages
 (defvar my-packages
-  '(paredit
+  '(
+    ag
+    auto-complete
+    cider
     clojure-mode
     clojure-mode-extra-font-locking
-    cider
-    ido-ubiquitous
-    rainbow-delimiters
-    tagedit
-    magit
-    markdown-mode
+    deft
     evil
     evil-leader
-    neotree
-    ag
+    exec-path-from-shell
     fill-column-indicator
-    auto-complete
-    projectile))
-
-;; Set up exec-path-from-shell on osx
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
-
+    ido-ubiquitous
+    magit
+    markdown-mode
+    neotree
+    paredit
+    projectile
+    rainbow-delimiters
+    tagedit
+))
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
 ;;;;
-;; Customization
+;; 2. Evil + evil-leader
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/customizations")
-
-;; Evil leader
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
-
-;; Evil mode
 (evil-mode 1)
 
-;; Magit w/ evil
-(evil-leader/set-key "g" 'magit-status) 
-;; TODO determine a good way to get evil mode bindings in magit
-;;(evil-set-initial-state 'magit-status-mode 'normal)
-;; (evil-define-key 'normal magit-status-mode-map
-;;  "j" 'magit-goto-next-section
-;;  "k" 'magit-goto-previous-section) 
+;;;;
+;; 3. Generic Customization
+;;;;
+
+(fset 'yes-or-no-p 'y-or-n-p) ; Changes all yes/no questions to y/n type
+(setq inhibit-startup-message t) ; Go straight to scratch buffer on startup
 
 ;; Make it easy to reload this file
 (defun reload-init ()
   (interactive)
   (load-file "~/.emacs.d/init.el"))
-(evil-leader/set-key "l" 'reload-init) 
+(evil-leader/set-key "l" 'reload-init)
 
-;; Auto-complete
-(ac-config-default)
+(ac-config-default) ; autocomplete
 
-;; Sets up exec-path-from shell
+(evil-leader/set-key "b" 'switch-to-buffer)
+
+;; elisp code evaluation
+(evil-leader/set-key-for-mode 'emacs-lisp-mode
+  "e" 'eval-last-sexp)
+
+(menu-bar-mode -1) ; turn off menu bar at top
+
+(global-linum-mode)
+
+;; Don't need the tool-bar
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+
+;; Don't show native OS scroll bars for buffers because they're redundant
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+
+; darcula theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'load-path "~/.emacs.d/themes")
+(load-theme 'darcula t)
+
+(set-face-attribute 'default nil :height 140) ; increase font size
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 52))) ; default window size
+
+;; Copy/paste stuff
+(setq x-select-enable-clipboard t
+      x-select-enable-primary t
+
+      ;; Save clipboard strings into kill ring before replacing them.
+      ;; When one selects something in another program to paste it into Emacs,
+      ;; but kills something in Emacs before actually pasting it,
+      ;; this selection is gone unless this variable is non-nil
+      save-interprogram-paste-before-kill t
+
+      ;; Mouse yank commands yank at point instead of at click.
+      mouse-yank-at-point t)
+
+(blink-cursor-mode 0)
+(setq-default frame-title-format "%b (%f)") ; full path in title bar
+(setq ring-bell-function 'ignore) ; no bell!
+
+;; max column width
+(setq-default fill-column 110)
+(setq-default auto-fill-function 'do-auto-fill)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
+
+(show-paren-mode 1) ; highlight matching parens
+
+(global-hl-line-mode 1) ; highlight current line
+
+;; Automatically load paredit when editing a lisp file
+;; More at http://www.emacswiki.org/emacs/ParEdit
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+;; eldoc-mode shows documentation in the minibuffer when writing code
+;; http://www.emacswiki.org/emacs/ElDoc
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+;;;;
+;; 4. Package Specific Customization
+;;
+;;    when customization for a single package becomes unwieldy, move it out to a personal file and require it.
+;;    NOTE - dependencies between packages aren't captured well in this structure
+;;;;
+
+;; uniquify
+(setq uniquify-buffer-name-style 'forward)
+
+;; ido
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point nil) ; turn this annoying behaviour off
+(ido-ubiquitous-mode 1) ; ido everywhere!
+(evil-leader/set-key "r" 'ido-find-file) ; I miss ctrlp...
+
+;; magit
+(require 'magit-personal)
+
+;; exec-from-shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
    '("PATH")))
 
-;; TODO inline the below items
+;; clojure
+(add-hook 'clojure-mode-hook 'enable-paredit-mode)
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 
-;; These customizations make it easier for you to navigate files,
-;; switch buffers, and choose options from the minibuffer.
-(load "navigation.el")
+;; cider
+(require 'cider-personal)
 
-(evil-leader/set-key "b" 'switch-to-buffer)
-
-;; These customizations change the way emacs looks and disable/enable
-;; some user interface elements
-(load "ui.el")
-
-;; These customizations make editing a bit nicer.
-;; TODO - validate
-(load "editing.el")
-
-;; Hard-to-categorize customizations
-(load "misc.el")
-
-;; For editing lisps
-;; TODO - validate
-(load "elisp-editing.el")
-
-;; Langauage-specific
-;; TODO validate
-(load "setup-clojure.el")
-(load "setup-js.el")
-
-;; elisp bindings
-(evil-leader/set-key-for-mode 'emacs-lisp-mode
-  "e" 'eval-last-sexp)
-
-;; Clojure specific bindings
-;; cider refcard here: https://github.com/clojure-emacs/cider/blob/master/doc/cider-refcard.pdf
-;; TODO cljs bindings
-(evil-leader/set-key-for-mode 'clojure-mode
-  "c" 'cider-jack-in
-  "e" 'cider-eval-last-sexp
-  "d" 'cider-doc)
-
-;; Org mode todo bindings
-(evil-leader/set-key-for-mode 'org-mode
-  "t" 'org-todo-list
-  "c" 'org-todo
-  "a" 'org-agenda-list) 
-
-;; Org mode timestamp bindings
-(evil-leader/set-key-for-mode 'org-mode
-  "s" 'org-schedule
-  "d" 'org-deadline
-  "j" 'org-timestamp-down-day
-  "k" 'org-timestamp-up-day)
-
-;; Org mode TODO keywords
-(setq org-todo-keywords 
-      '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
-
-;; Org mode agenda files 
-
-;; recursively find .org files in provided directory
-;; modified from an Emacs Lisp Intro example
-;; TODO move this into a utils file
-(defun sa-find-org-file-recursively (&optional directory filext)
-  "Return .org and .org_archive files recursively from DIRECTORY.
-If FILEXT is provided, return files with extension FILEXT instead." 
-  (let* (org-file-list
-	 (case-fold-search t)	      ; filesystems are case sensitive
-	 (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
-	 (filext (or filext "org$\\\|org_archive"))
-	 (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
-	 (cur-dir-list (directory-files directory t file-name-regex)))
-    ;; loop over directory listing
-    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
-      (cond
-       ((file-regular-p file-or-dir) ; regular files
-	(if (string-match fileregex file-or-dir) ; org files
-	    (add-to-list 'org-file-list file-or-dir)))
-       ((file-directory-p file-or-dir)
-	(dolist (org-file (sa-find-org-file-recursively file-or-dir filext)
-			  org-file-list) ; add files found to result
-	  (add-to-list 'org-file-list org-file)))))))
-
-;; NOTE this requires that emacs was run from iterm
-(defconst thought-docs-dir (concat (getenv "REPOS") "/thought-docs/"))
-(setq org-agenda-files
-      (sa-find-org-file-recursively thought-docs-dir))
+;; org-mode
+(require 'org-personal)
 
 ;; Markdown mode
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
@@ -172,5 +181,11 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; projectile
-(projectile-global-mode) 
-(evil-leader/set-key "b" 'projectile-find-file)
+(projectile-global-mode)
+(evil-leader/set-key "f" 'projectile-find-file)
+
+;; Deft
+(setq deft-extensions '("txt" "md" "org"))
+(setq deft-directory global-docs-dir)
+(setq deft-recursive t)
+(evil-leader/set-key "v" 'deft)
