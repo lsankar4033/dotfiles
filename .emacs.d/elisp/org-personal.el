@@ -40,4 +40,4 @@ If FILEXT is provided, return files with extension FILEXT instead."
 			  org-file-list) ; add files found to result
 	  (add-to-list 'org-file-list org-file)))))))
 
-(setq org-agenda-files (sa-find-org-file-recursively global-docs-dir))
+(setq org-agenda-files (sa-find-org-file-recursively global-docs-dir)) 

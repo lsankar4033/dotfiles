@@ -15,4 +15,4 @@
     (save-buffer)))
 
 ;; NOTE this should be changed if this moves
-(defconst global-docs-dir "/Users/lakshmansankar/git/thought-docs/" )
+(defconst global-docs-dir "~/git/thought-docs/" )

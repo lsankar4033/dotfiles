@@ -4,7 +4,6 @@
 ;; 3. generic customization
 ;; 4. package specific stuff. most of this should be extracted into other files
 
-(add-to-list 'load-path "~/.emacs.d/customizations")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'utils)
 
@@ -143,8 +142,10 @@
 ;;;;
 ;; 4. Package Specific Customization
 ;;
-;;    when customization for a single package becomes unwieldy, move it out to a personal file and require it.
-;;    NOTE - dependencies between packages aren't captured well in this structure
+;; when customization for a single package becomes unwieldy, move it out to a personal file and require it.
+;;
+;; NOTE - dependencies between packages aren't captured well in this structure. it might make more sense to
+;; organize by semantic function or major mode
 ;;;;
 
 ;; uniquify
@@ -190,4 +191,4 @@
 (setq deft-extensions '("txt" "md" "org"))
 (setq deft-directory global-docs-dir)
 (setq deft-recursive t)
-(evil-leader/set-key "v" 'deft)
+(evil-leader/set-key "v" 'deft) 
