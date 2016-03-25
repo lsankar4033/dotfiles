@@ -139,6 +139,9 @@
 
 (setq create-lockfiles nil) ; don't need lockfiles when editing
 
+(setq backup-inhibited t) ;disable backup
+(setq auto-save-default nil) ;disable auto save
+
 ;;;;
 ;; 4. Package Specific Customization
 ;;
