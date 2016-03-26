@@ -27,6 +27,7 @@
     cider
     clojure-mode
     clojure-mode-extra-font-locking
+    company
     deft
     evil
     evil-leader
@@ -150,6 +151,9 @@
 ;; NOTE - dependencies between packages aren't captured well in this structure. it might make more sense to
 ;; organize by semantic function or major mode
 ;;;;
+
+;; company
+(global-company-mode)
 
 ;; uniquify
 (setq uniquify-buffer-name-style 'forward)
