@@ -22,5 +22,9 @@
       (funcall f)
       (select-window original-window))))
 
+(defun without-confirmation (fn)
+  (flet ((y-or-n-p (&rest args) t)) ; Skip the confirmation prompts.
+    (funcall fn)))
+
 ;; NOTE this should be changed if this moves
 (defconst global-docs-dir "~/git/thought-docs/" )
