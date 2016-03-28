@@ -48,6 +48,7 @@
 
 ;;;;
 ;; 2. Evil + evil-leader
+;; Currently the only reason this is split out is that it's a prereq for almost every dep that follows.
 ;;;;
 
 (global-evil-leader-mode)
@@ -142,6 +143,8 @@
 
 (setq backup-inhibited t) ;disable backup
 (setq auto-save-default nil) ;disable auto save
+
+(setq split-height-threshold nil) ; only split window horizontally by default
 
 ;;;;
 ;; 4. Package Specific Customization
