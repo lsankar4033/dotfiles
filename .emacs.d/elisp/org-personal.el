@@ -1,9 +1,12 @@
 (provide 'org-personal)
 (require 'utils)
 
+;; structure bindings
+(evil-define-key 'normal org-mode-map "J" 'org-demote-subtree)
+(evil-define-key 'normal org-mode-map "K" 'org-promote-subtree)
+
 ;; todo bindings
 (evil-leader/set-key-for-mode 'org-mode
-  "t" 'org-todo-list
   "c" 'org-todo
   "a" 'org-agenda-list)
 
@@ -12,8 +15,12 @@
   "s" 'org-schedule
   "d" 'org-deadline
   "j" 'org-timestamp-down-day
-  "k" 'org-timestamp-up-day
-  "e" 'org-date-from-calendar)
+  "k" 'org-timestamp-up-day)
+
+;; tags bindings
+(evil-leader/set-key-for-mode 'org-mode
+  "e" 'org-set-tags-command
+  "w" 'org-tags-view)
 
 (setq org-todo-keywords
       '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
