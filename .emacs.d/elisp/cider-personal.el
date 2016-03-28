@@ -51,11 +51,12 @@
 (evil-leader/set-key-for-mode 'clojure-mode
   "c" 'my-cider-restart-nrepl
   "j" 'cider-jack-in
-  "e" (lambda () (interactive) (with-nrepl-connection-of-current-buffer 'cider-eval-defun-at-point))
-  )
+  "e" (lambda () (interactive) (with-nrepl-connection-of-current-buffer 'cider-eval-defun-at-point)))
 
-(evil-define-key 'normal clojure-mode-map "D"
+(evil-define-key 'normal clojure-mode-map [?\]?d]
   (lambda () (interactive) (preserve-selected-window (lambda () (call-interactively 'cider-doc)))))
+
+(evil-define-key 'normal clojure-mode-map [?\] ?\C-d] 'cider-jump)
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
