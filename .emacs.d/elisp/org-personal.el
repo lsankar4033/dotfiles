@@ -2,8 +2,8 @@
 (require 'utils)
 
 ;; structure bindings
-(evil-define-key 'normal org-mode-map "J" 'org-demote-subtree)
-(evil-define-key 'normal org-mode-map "K" 'org-promote-subtree)
+(evil-define-key 'normal org-mode-map (kbd "C-j") 'org-demote-subtree)
+(evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
 
 ;; todo bindings
 (evil-leader/set-key-for-mode 'org-mode
