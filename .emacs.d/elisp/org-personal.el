@@ -8,12 +8,16 @@
 ;; todo bindings
 (evil-leader/set-key-for-mode 'org-mode
   "c" 'org-todo
-  "a" 'org-agenda-list)
+  "a" 'org-agenda-list
+  "z" 'org-open-at-point)
 
 ;; timestamp bindings
 (evil-leader/set-key-for-mode 'org-mode
   "s" 'org-schedule
   "d" 'org-deadline
+  "q" 'org-time-stamp
+
+  ;; TODO revisit these- they're not ergonomic
   "j" 'org-timestamp-down-day
   "k" 'org-timestamp-up-day)
 
