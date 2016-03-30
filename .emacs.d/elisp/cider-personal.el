@@ -51,6 +51,7 @@
 (evil-leader/set-key-for-mode 'clojure-mode
   "c" 'my-cider-restart-nrepl
   "j" 'cider-jack-in
+  "k" 'cider-jack-in-clojurescript
   "e" (lambda () (interactive) (with-nrepl-connection-of-current-buffer 'cider-eval-defun-at-point)))
 
 (evil-define-key 'normal clojure-mode-map [?\]?d]
@@ -60,4 +61,4 @@
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
-(setq cider-repl-pop-to-buffer-on-connect t) 
+(setq cider-repl-pop-to-buffer-on-connect t)

@@ -5,6 +5,7 @@
 ;; 4. package specific stuff. most of this should be extracted into other files
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
+
 (require 'utils)
 
 ;;;;
@@ -24,7 +25,6 @@
   '(
     ag
     auto-complete
-    cider
     clojure-mode
     clojure-mode-extra-font-locking
     company
@@ -183,6 +183,8 @@
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 
 ;; cider
+(add-to-list 'load-path "~/.emacs.d/vendor/cider-0.11.0")
+(require 'cider)
 (require 'cider-personal)
 
 ;; org-mode
@@ -201,4 +203,17 @@
 (setq deft-extensions '("txt" "md" "org"))
 (setq deft-directory global-docs-dir)
 (setq deft-recursive t)
-(evil-leader/set-key "v" 'deft) 
+(evil-leader/set-key "v" 'deft)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cider-cljs-lein-repl
+   "(do (require 'cljs.repl.node) (cemerick.piggieback/cljs-repl (cljs.repl.node/repl-env)))"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
