@@ -50,7 +50,7 @@
 (evil-define-key 'normal clojure-mode-map [?\]?d]
   (lambda () (interactive) (preserve-selected-window (lambda () (call-interactively 'cider-doc)))))
 
-(evil-define-key 'normal clojure-mode-map [?\] ?\C-d] 'cider-jump)
+(evil-define-key 'normal clojure-mode-map [?\] ?\C-d] 'cider-find-var)
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
