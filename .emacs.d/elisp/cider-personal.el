@@ -5,7 +5,7 @@
   "Returns either the corresponding nrepl buffer for the given buffer, or a string error message."
   (if (not (cider-connected-p))
       "No active nREPL connection."
-    (let ((project-directory (nrepl-project-directory-for (nrepl-current-dir))))
+    (let ((project-directory (cider-current-dir)))
       (if (not project-directory)
           "No project directory found."
         (let ((buf (cond
@@ -39,20 +39,13 @@
 (defun my-cider-make-connection-buffer-the-current-connection (connection-buffer)
   (cons connection-buffer (delq connection-buffer nrepl-connection-list)))
 
-(defun with-nrepl-connection-of-current-buffer (f)
-  (let ((result (nrepl-connection-for-buffer (current-buffer))))
-    (if (stringp result)
-        (message result)
-      (progn
-        (my-cider-make-connection-buffer-the-current-connection result)
-        (funcall f)))))
-
 ;; cider refcard here: https://github.com/clojure-emacs/cider/blob/master/doc/cider-refcard.pdf
 (evil-leader/set-key-for-mode 'clojure-mode
   "c" 'my-cider-restart-nrepl
+  "w" 'cider-load-buffer
   "j" 'cider-jack-in
   "k" 'cider-jack-in-clojurescript
-  "e" (lambda () (interactive) (with-nrepl-connection-of-current-buffer 'cider-eval-defun-at-point)))
+  "e"'cider-eval-defun-at-point)
 
 (evil-define-key 'normal clojure-mode-map [?\]?d]
   (lambda () (interactive) (preserve-selected-window (lambda () (call-interactively 'cider-doc)))))
