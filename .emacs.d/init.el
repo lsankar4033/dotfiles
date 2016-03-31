@@ -179,9 +179,7 @@
    '("PATH")))
 
 ;; clojure
-(add-hook 'clojure-mode-hook 'enable-paredit-mode)
-(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+(require 'clojure-personal)
 
 ;; cider
 (require 'cider-personal)
