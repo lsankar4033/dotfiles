@@ -202,6 +202,10 @@
 (setq deft-recursive t)
 (evil-leader/set-key "v" 'deft)
 
+;; paredit
+(evil-leader/set-key-for-mode 'clojure-mode
+  "C-l" 'paredit-forward-slurp-sexp)
+
 ;; Custom stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -209,4 +213,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cider-cljs-lein-repl
-   "(do (require 'cljs.repl.node) (cemerick.piggieback/cljs-repl (cljs.repl.node/repl-env)))"))
+   "(do (require 'cljs.repl.node) (cemerick.piggieback/cljs-repl (cljs.repl.node/repl-env)))")
+ '(org-agenda-files
+   (quote
+    ("/Users/lakshmansankar/git/thought-docs/perm_docs/backlog.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/events.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/fitness_log.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/journal.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/pomodoro_log.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/reading_list.org" "/Users/lakshmansankar/git/thought-docs/liftoff/per_coordinate_learning_rates.org" "/Users/lakshmansankar/git/thought-docs/liftoff/prospector_client.org" "/Users/lakshmansankar/git/thought-docs/liftoff/schema_migration.org" "/Users/lakshmansankar/git/thought-docs/liftoff/unified_model_rollout.org" "/Users/lakshmansankar/git/thought-docs/liftoff/vw.org" "/Users/lakshmansankar/git/thought-docs/interests/21co.org" "/Users/lakshmansankar/git/thought-docs/interests/ad_clicks_facebook.org" "/Users/lakshmansankar/git/thought-docs/interests/btc_lightning_network.org" "/Users/lakshmansankar/git/thought-docs/interests/device_purchase.org" "/Users/lakshmansankar/git/thought-docs/interests/elisp.org" "/Users/lakshmansankar/git/thought-docs/interests/emacs.org" "/Users/lakshmansankar/git/thought-docs/interests/house_buying.org" "/Users/lakshmansankar/git/thought-docs/interests/inspire_to_build.org" "/Users/lakshmansankar/git/thought-docs/interests/lovecraft.org" "/Users/lakshmansankar/git/thought-docs/interests/news_reader.org" "/Users/lakshmansankar/git/thought-docs/interests/org_mode.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

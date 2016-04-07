@@ -1,6 +1,9 @@
 (provide 'org-personal)
 (require 'utils)
 
+(setq org-indent-mode t)
+(setq org-startup-indented t)
+
 ;; structure bindings
 (evil-define-key 'normal org-mode-map (kbd "C-j") 'org-demote-subtree)
 (evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
@@ -9,7 +12,9 @@
 (evil-leader/set-key-for-mode 'org-mode
   "c" 'org-todo
   "a" 'org-agenda-list
-  "z" 'org-open-at-point)
+  "z" 'org-open-at-point
+  "g" 'org-insert-heading
+  "h" 'org-insert-heading-respect-content)
 
 ;; timestamp bindings
 (evil-leader/set-key-for-mode 'org-mode
@@ -25,6 +30,11 @@
 (evil-leader/set-key-for-mode 'org-mode
   "e" 'org-set-tags-command
   "w" 'org-tags-view)
+
+;; babel bindings
+(evil-leader/set-key-for-mode 'org-mode
+  "x" 'org-babel-execute-src-block)
+(setq org-confirm-babel-evaluate nil)
 
 (setq org-todo-keywords
       '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
