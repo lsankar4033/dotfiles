@@ -142,10 +142,17 @@
 
 (setq create-lockfiles nil) ; don't need lockfiles when editing
 
-(setq backup-inhibited t) ;disable backup
-(setq auto-save-default nil) ;disable auto save
+;; put backups in temporary-file-directory
+(setq backup-directory-alist
+      `((".*" .,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (setq split-height-threshold nil) ; only split window horizontally by default
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ; delete trailing whitespace on save
+
+(evil-define-key 'normal emacs-lisp-mode-map [?\]?d] 'describe-item-at-point)
 
 ;;;;
 ;; 4. Package Specific Customization

@@ -7,14 +7,17 @@
 ;; structure bindings
 (evil-define-key 'normal org-mode-map (kbd "C-j") 'org-demote-subtree)
 (evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
+(evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
+(evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
+
 
 ;; todo bindings
 (evil-leader/set-key-for-mode 'org-mode
   "c" 'org-todo
   "a" 'org-agenda-list
   "z" 'org-open-at-point
-  "g" 'org-insert-heading
-  "h" 'org-insert-heading-respect-content)
+  "h" 'org-insert-heading
+  "y" 'org-insert-heading-respect-content)
 
 ;; timestamp bindings
 (evil-leader/set-key-for-mode 'org-mode
@@ -34,7 +37,11 @@
 ;; babel bindings
 (evil-leader/set-key-for-mode 'org-mode
   "x" 'org-babel-execute-src-block)
+
+;; babel settings
+(setq org-src-tab-acts-natively t)
 (setq org-confirm-babel-evaluate nil)
+
 
 (setq org-todo-keywords
       '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
