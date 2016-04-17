@@ -153,6 +153,8 @@
 
 (evil-define-key 'normal emacs-lisp-mode-map [?\]?d] 'describe-item-at-point)
 
+(setq-default evil-symbol-word-search t) ; make '*' and '#' symbol search instead of word search
+
 ;;;;
 ;; 4. Package Specific Customization
 ;;
