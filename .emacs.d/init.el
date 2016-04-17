@@ -5,6 +5,7 @@
 ;; 4. package specific stuff. most of this should be extracted into other files
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
+(add-to-list 'load-path "~/.emacs.d/vendor")
 
 (require 'utils)
 
@@ -79,7 +80,7 @@
 
 (menu-bar-mode -1) ; turn off menu bar at top
 
-(global-linum-mode)
+(global-linum-mode) ; line numbers
 
 ;; Don't need the tool-bar
 (when (fboundp 'tool-bar-mode)
@@ -121,8 +122,6 @@
 (global-fci-mode 1)
 
 (show-paren-mode 1) ; highlight matching parens
-
-(global-hl-line-mode 1) ; highlight current line
 
 ;; Automatically load paredit when editing a lisp file
 ;; More at http://www.emacswiki.org/emacs/ParEdit
@@ -213,6 +212,9 @@
 (evil-leader/set-key-for-mode 'clojure-mode
   "C-l" 'paredit-forward-slurp-sexp)
 
+;; keylog
+(require 'keylog)
+
 ;; Custom stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -220,13 +222,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cider-cljs-lein-repl
-   "(do (require 'cljs.repl.node) (cemerick.piggieback/cljs-repl (cljs.repl.node/repl-env)))")
- '(org-agenda-files
-   (quote
-    ("/Users/lakshmansankar/git/thought-docs/perm_docs/backlog.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/events.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/fitness_log.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/journal.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/pomodoro_log.org" "/Users/lakshmansankar/git/thought-docs/perm_docs/reading_list.org" "/Users/lakshmansankar/git/thought-docs/liftoff/per_coordinate_learning_rates.org" "/Users/lakshmansankar/git/thought-docs/liftoff/prospector_client.org" "/Users/lakshmansankar/git/thought-docs/liftoff/schema_migration.org" "/Users/lakshmansankar/git/thought-docs/liftoff/unified_model_rollout.org" "/Users/lakshmansankar/git/thought-docs/liftoff/vw.org" "/Users/lakshmansankar/git/thought-docs/interests/21co.org" "/Users/lakshmansankar/git/thought-docs/interests/ad_clicks_facebook.org" "/Users/lakshmansankar/git/thought-docs/interests/btc_lightning_network.org" "/Users/lakshmansankar/git/thought-docs/interests/device_purchase.org" "/Users/lakshmansankar/git/thought-docs/interests/elisp.org" "/Users/lakshmansankar/git/thought-docs/interests/emacs.org" "/Users/lakshmansankar/git/thought-docs/interests/house_buying.org" "/Users/lakshmansankar/git/thought-docs/interests/inspire_to_build.org" "/Users/lakshmansankar/git/thought-docs/interests/lovecraft.org" "/Users/lakshmansankar/git/thought-docs/interests/news_reader.org" "/Users/lakshmansankar/git/thought-docs/interests/org_mode.org"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+   "(do (require 'cljs.repl.node) (cemerick.piggieback/cljs-repl (cljs.repl.node/repl-env)))"))
