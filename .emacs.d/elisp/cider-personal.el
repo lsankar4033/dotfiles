@@ -46,11 +46,12 @@
 
 ;; cider refcard here: https://github.com/clojure-emacs/cider/blob/master/doc/cider-refcard.pdf
 (evil-leader/set-key-for-mode 'clojure-mode
-  "c" 'my-cider-restart-nrepl
   "w" 'cider-load-buffer
   "j" 'cider-jack-in
   "k" 'cider-jack-in-clojurescript
-  "e" 'my-cider-eval-current-sexp)
+  "e" 'my-cider-eval-current-sexp
+  "tw" 'cider-test-run-ns-tests
+  "te" 'cider-test-run-test)
 
 (evil-define-key 'normal clojure-mode-map [?\]?d]
   (lambda () (interactive) (preserve-selected-window (lambda () (call-interactively 'cider-doc)))))
