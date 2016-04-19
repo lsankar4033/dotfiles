@@ -41,6 +41,7 @@
     neotree
     paredit
     projectile
+    python-mode
     rainbow-delimiters
     tagedit
 ))
@@ -71,6 +72,7 @@
 (evil-leader/set-key "l" 'reload-init)
 
 (ac-config-default) ; autocomplete
+(global-auto-complete-mode)
 
 (evil-leader/set-key "b" 'switch-to-buffer)
 
