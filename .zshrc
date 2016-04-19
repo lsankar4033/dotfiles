@@ -26,7 +26,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/platform-tools"
 
 # general repos
-export REPOS="$HOME/git"
+export REPOS="$HOME/src"
 alias repos='cd $REPOS'
 
 # thought docs
