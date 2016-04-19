@@ -220,7 +220,6 @@
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
 
-
 ;; Custom stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

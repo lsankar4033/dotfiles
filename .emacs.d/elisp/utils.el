@@ -49,5 +49,10 @@
 	  ;; surrounding sexp for a function call.
 	  ((setq sym (function-at-point)) (describe-function sym)))))
 
+(defun current-sexp ()
+  "Returns the text content of the sexp list around the cursor."
+  (let ((position (bounds-of-thing-at-point 'list)))
+    (buffer-substring-no-properties (car position) (cdr position))))
+
 ;; NOTE this should be changed if this moves
-(defconst global-docs-dir "~/git/thought-docs/" )
+(defconst global-docs-dir "~/git/thought-docs/")
