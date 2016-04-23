@@ -17,6 +17,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 (package-initialize)
 (when (not package-archive-contents) ; refresh package archives
   (package-refresh-contents))
@@ -31,6 +32,7 @@
     clojure-mode-extra-font-locking
     company
     deft
+    elpy
     evil
     evil-leader
     exec-path-from-shell
@@ -41,7 +43,6 @@
     neotree
     paredit
     projectile
-    python-mode
     rainbow-delimiters
     tagedit
 ))
@@ -79,6 +80,8 @@
 ;; elisp code evaluation
 (evil-leader/set-key-for-mode 'emacs-lisp-mode
   "e" 'eval-last-sexp)
+(evil-leader/set-key-for-mode 'emacs-lisp-mode
+  "w" 'eval-buffer)
 
 (menu-bar-mode -1) ; turn off menu bar at top
 
@@ -215,12 +218,30 @@
 ;; paredit
 (evil-leader/set-key-for-mode 'clojure-mode
   "C-l" 'paredit-forward-slurp-sexp)
+(evil-leader/set-key-for-mode 'emacs-lisp-mode
+  "C-l" 'paredit-forward-slurp-sexp)
 
 ;; keylog
 (require 'keylog)
 
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
+
+;; python
+; (require 'python-personal)
+(elpy-enable)
+
+;; neotree
+(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+(add-hook 'neotree-mode-hook
+	  (lambda ()
+	    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "r") 'neotree-change-root)
+	    (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+	    (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+	    (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+	    (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
 
 ;; Custom stuff
 (custom-set-variables

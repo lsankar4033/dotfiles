@@ -11,11 +11,19 @@
   (interactive)
   (call-interactively 'magit-status)
   (magit-jump-to-unstaged)
-  (magit-goto-next-section)) 
+  (magit-goto-next-section))
 (evil-leader/set-key
   "g" (lambda() (interactive)
           (save-buffer-if-dirty)
           (magit-status-and-focus-unstaged)))
+
+(defun git-pull ()
+  (interactive)
+  (with-magit-output-buffer 'magit-pull))
+
+(defun git-push ()
+  (interactive)
+  (with-magit-output-buffer 'magit-push))
 
 (defun init-magit-status-mode-keybindings ()
   (define-keys evil-normal-state-local-map
@@ -29,7 +37,10 @@
     "U" 'magit-unstage-all
     "gu" 'magit-jump-to-unstaged
     (kbd "TAB") 'magit-toggle-section
-    "r" 'magit-refresh))
+    "r" 'magit-refresh
+    ",ps" 'git-push
+    ",pu" 'git-pull))
+
 (add-hook 'magit-status-mode-hook 'init-magit-status-mode-keybindings)
 
 (defun init-magit-commit-mode-keybindings ()
@@ -38,4 +49,4 @@
 (add-hook 'magit-commit-mode-hook 'init-magit-commit-mode-keybindings)
 
 ;; Ensure evil-leader works in non-editing modes like magit. This is referenced from evil-leader's README.
-(setq evil-leader/no-prefix-mode-rx '("magit-.*-mode")) 
+(setq evil-leader/no-prefix-mode-rx '("magit-.*-mode"))
