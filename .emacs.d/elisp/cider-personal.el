@@ -39,19 +39,29 @@
 (defun my-cider-make-connection-buffer-the-current-connection (connection-buffer)
   (cons connection-buffer (delq connection-buffer nrepl-connection-list)))
 
-(defun my-cider-eval-current-sexp (&optional print-result)
-  "Eval the sexp the cursor is currently in. In Emacs' syntax table, this is called a list of expressions."
+(defun my-cider-eval-echo (&optional print-result)
+  "Eval the sexp the cursor is currently in. In Emacs' syntax table, this is called a list of
+   expressions. Displays output to echo area"
   (interactive)
   (cider-interactive-eval (current-sexp)))
+
+(defun my-cider-eval-repl ()
+  (interactive)
+  (cider-interactive-eval (current-sexp)
+			  (cider-insert-eval-handler (cider-current-connection)))
+  (cider-switch-to-repl-buffer))
 
 ;; cider refcard here: https://github.com/clojure-emacs/cider/blob/master/doc/cider-refcard.pdf
 (evil-leader/set-key-for-mode 'clojure-mode
   "w" 'cider-load-buffer
   "j" 'cider-jack-in
   "k" 'cider-jack-in-clojurescript
-  "e" 'my-cider-eval-current-sexp
+  "ee" 'my-cider-eval-echo
+  "er" 'my-cider-eval-repl
+  "ew" 'cider-pprint-eval-defun-at-point
   "tw" 'cider-test-run-ns-tests
-  "te" 'cider-test-run-test)
+  "te" 'cider-test-run-test
+  "q" 'cider-interrupt)
 
 (evil-define-key 'normal clojure-mode-map [?\]?d]
   (lambda () (interactive) (preserve-selected-window (lambda () (call-interactively 'cider-doc)))))
