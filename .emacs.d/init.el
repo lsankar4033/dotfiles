@@ -5,7 +5,9 @@
 ;; 4. package specific stuff. most of this should be extracted into other files
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
-(add-to-list 'load-path "~/.emacs.d/vendor")
+
+(add-to-list 'load-path "~/.emacs.d/vendor/keylog")
+(load "~/.emacs.d/vendor/cljfmt/cljfmt.el")
 
 (require 'utils)
 
@@ -22,6 +24,7 @@
 (when (not package-archive-contents) ; refresh package archives
   (package-refresh-contents))
 
+
 ;; Install all of these packages
 (defvar my-packages
   '(
@@ -37,6 +40,7 @@
     evil-leader
     exec-path-from-shell
     fill-column-indicator
+    go-mode
     ido-ubiquitous
     magit
     markdown-mode
@@ -45,10 +49,13 @@
     projectile
     rainbow-delimiters
     tagedit
+    yaml-mode
 ))
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(find-lisp-object-file-name 'package-install (symbol-function 'package-install))
 
 ;;;;
 ;; 2. Evil + evil-leader
@@ -160,6 +167,10 @@
 
 (setq-default evil-symbol-word-search t) ; make '*' and '#' symbol search instead of word search
 
+;; Making text bigger/smaller
+(define-key evil-normal-state-map (kbd "s-=") 'text-scale-increase)
+(define-key evil-normal-state-map (kbd "s--") 'text-scale-decrease)
+
 ;;;;
 ;; 4. Package Specific Customization
 ;;
@@ -227,9 +238,8 @@
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
 
-;; python
-; (require 'python-personal)
-(elpy-enable)
+;; elpy
+(require 'elpy-personal)
 
 ;; neotree
 (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
@@ -242,6 +252,12 @@
 	    (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
 	    (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
 	    (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+
+;; yaml-mode
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; cljfmt
+(add-hook 'before-save-hook 'cljfmt-before-save)
 
 ;; Custom stuff
 (custom-set-variables
