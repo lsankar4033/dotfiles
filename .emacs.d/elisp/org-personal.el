@@ -10,7 +10,6 @@
 (evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
 (evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
 
-
 ;; todo bindings
 (evil-leader/set-key-for-mode 'org-mode
   "c" 'org-todo
@@ -37,14 +36,19 @@
 ;; babel bindings
 (evil-leader/set-key-for-mode 'org-mode
   "x" 'org-babel-execute-src-block)
-
-;; babel settings
 (setq org-src-tab-acts-natively t)
 (setq org-confirm-babel-evaluate nil)
+(org-babel-do-load-languages 'org-babel-load-languages
+			     '((emacs-lisp . t)
+			       (R . t)
+			       (sql . t)
+			       (sh . t)))
 
+(evil-leader/set-key-for-mode 'org-mode
+  "i" 'org-toggle-inline-images)
 
 (setq org-todo-keywords
-      '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
+      '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "INVALIDATED" "DELEGATED")))
 
 ;; recursively find .org files in provided directory
 ;; modified from an Emacs Lisp Intro example
@@ -68,4 +72,29 @@ If FILEXT is provided, return files with extension FILEXT instead."
 			  org-file-list) ; add files found to result
 	  (add-to-list 'org-file-list org-file)))))))
 
-(setq org-agenda-files (sa-find-org-file-recursively global-docs-dir)) 
+(setq org-agenda-files (sa-find-org-file-recursively global-docs-dir))
+
+;; Make org-indent-mode play nicely with autofill. Taken from this Stackoverflow answer:
+;; http://stackoverflow.com/questions/14351154/org-mode-outline-level-specific-fill-column-values#
+;; NOTE this doesn't work yet! I should debug when I get a chance
+
+(defun calc-offset-on-org-level ()
+  "Calculate offset (in chars) on current level in org mode file."
+  (* (or (org-current-level) 0) org-indent-indentation-per-level))
+
+(defun my-org-fill-paragraph (&optional JUSTIFY)
+  "Calculate apt fill-column value and fill paragraph."
+  (let* ((fill-column (- fill-column (calc-offset-on-org-level))))
+    (org-fill-paragraph JUSTIFY)))
+
+(defun my-org-auto-fill-function ()
+  "Calculate apt fill-column value and do auto-fill"
+  (let* ((fill-column (- fill-column (calc-offset-on-org-level))))
+    (org-auto-fill-function)))
+
+(defun my-org-mode-hook ()
+  (setq fill-paragraph-function   'my-org-fill-paragraph
+        normal-auto-fill-function 'my-org-auto-fill-function))
+
+(add-hook 'org-load-hook 'my-org-mode-hook)
+(add-hook 'org-mode-hook 'my-org-mode-hook)

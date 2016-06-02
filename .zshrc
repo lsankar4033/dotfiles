@@ -97,3 +97,29 @@ sudo launchctl limit maxfiles 500000 500000
 ulimit -n 500000
 
 alias rstudio='open -a RStudio'
+
+# Vi-mode
+# TODO - make this work nicely
+#bindkey -v
+
+#function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#    zle reset-prompt
+#}
+
+#zle -N zle-line-init
+#zle -N zle-keymap-select
+#export KEYTIMEOUT=1
+
+#bindkey -M vicmd '/' history-incremental-search-backward
+#
+
+# yank from zsh vi-mode nicely
+#function vi-yank-pbcopy {
+#  zle vi-yank
+#  echo "$CUTBUFFER" | pbcopy
+#}
+
+#zle -N vi-yank-pbcopy
+#bindkey -M vicmd 'y' vi-yank-pbcopy

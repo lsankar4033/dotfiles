@@ -33,9 +33,11 @@
     cider
     clojure-mode
     clojure-mode-extra-font-locking
+    coffee-mode
     company
     deft
     elpy
+    ess
     evil
     evil-leader
     exec-path-from-shell
@@ -49,6 +51,7 @@
     projectile
     rainbow-delimiters
     tagedit
+    web-mode
     yaml-mode
 ))
 (dolist (p my-packages)
@@ -129,7 +132,9 @@
 
 ;; max column width
 (setq-default fill-column 110)
+(setq-default fci-rule-column 110)
 (setq-default auto-fill-function 'do-auto-fill)
+
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
 
@@ -170,6 +175,9 @@
 ;; Making text bigger/smaller
 (define-key evil-normal-state-map (kbd "s-=") 'text-scale-increase)
 (define-key evil-normal-state-map (kbd "s--") 'text-scale-decrease)
+
+;; Toggling debug messages
+(define-key evil-normal-state-map (kbd "C-d") 'toggle-debug-on-error)
 
 ;;;;
 ;; 4. Package Specific Customization
@@ -242,7 +250,8 @@
 (require 'elpy-personal)
 
 ;; neotree
-(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+; NOTE Currently reserved for dired instead
+;(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
 (add-hook 'neotree-mode-hook
 	  (lambda ()
 	    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
@@ -259,6 +268,18 @@
 ;; cljfmt
 (add-hook 'before-save-hook 'cljfmt-before-save)
 
+;; dired
+(define-key evil-normal-state-map (kbd "C-n") 'dired)
+
+;; coffe-script
+(evil-leader/set-key-for-mode 'coffee-mode "c" 'coffee-compile-buffer)
+(evil-leader/set-key-for-mode 'coffee-mode "p" 'coffee-repl)
+(custom-set-variables '(coffee-tab-width 2)
+		      '(coffee-indent-like-python-mode t))
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
 ;; Custom stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -267,3 +288,9 @@
  ;; If there is more than one, they won't work right.
  '(cider-cljs-lein-repl
    "(do (require 'cljs.repl.node) (cemerick.piggieback/cljs-repl (cljs.repl.node/repl-env)))"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
