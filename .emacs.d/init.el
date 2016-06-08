@@ -44,14 +44,15 @@
     fill-column-indicator
     go-mode
     ido-ubiquitous
+    less-css-mode
     magit
     markdown-mode
     neotree
+    org-page
     paredit
     projectile
     rainbow-delimiters
     tagedit
-    web-mode
     yaml-mode
 ))
 (dolist (p my-packages)
@@ -277,10 +278,14 @@
 (custom-set-variables '(coffee-tab-width 2)
 		      '(coffee-indent-like-python-mode t))
 
-;; web-mode
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; html
+(evil-leader/set-key-for-mode 'html-mode "c" 'sgml-close-tag)
 
-;; Custom stuff
+;; org-page
+(require 'org-page)
+(require 'org-page-personal)
+
+;; Custom stuf,
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -50,6 +50,11 @@
 (setq org-todo-keywords
       '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "INVALIDATED" "DELEGATED")))
 
+;; spreadsheet bindings
+(evil-leader/set-key-for-mode 'org-mode
+  "ti" 'org-table-iterate
+  "ts" 'org-table-sort-lines)
+
 ;; recursively find .org files in provided directory
 ;; modified from an Emacs Lisp Intro example
 (defun sa-find-org-file-recursively (&optional directory filext)
