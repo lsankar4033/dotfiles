@@ -61,7 +61,8 @@
   "ew" 'cider-pprint-eval-defun-at-point
   "tw" 'cider-test-run-ns-tests
   "te" 'cider-test-run-test
-  "q" 'cider-interrupt)
+  "q" 'cider-interrupt
+  "cl" 'cider-repl-clear-buffer)
 
 (evil-define-key 'normal clojure-mode-map [?\]?d]
   (lambda () (interactive) (preserve-selected-window (lambda () (call-interactively 'cider-doc)))))
