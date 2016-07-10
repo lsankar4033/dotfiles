@@ -251,17 +251,15 @@
 (require 'elpy-personal)
 
 ;; neotree
-; NOTE Currently reserved for dired instead
-;(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
 (add-hook 'neotree-mode-hook
 	  (lambda ()
 	    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-	    (define-key evil-normal-state-local-map (kbd "r") 'neotree-change-root)
+	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-change-root)
 	    (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
 	    (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
-	    (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
-	    (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+	    (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)))
+(setq-default neo-show-hidden-files t)
 
 ;; yaml-mode
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
@@ -269,10 +267,7 @@
 ;; cljfmt
 (add-hook 'before-save-hook 'cljfmt-before-save)
 
-;; dired
-(define-key evil-normal-state-map (kbd "C-n") 'dired)
-
-;; coffe-script
+;; coffee-script
 (evil-leader/set-key-for-mode 'coffee-mode "c" 'coffee-compile-buffer)
 (evil-leader/set-key-for-mode 'coffee-mode "p" 'coffee-repl)
 (custom-set-variables '(coffee-tab-width 2)
