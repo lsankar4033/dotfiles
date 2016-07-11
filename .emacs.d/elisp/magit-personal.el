@@ -17,14 +17,6 @@
           (save-buffer-if-dirty)
           (magit-status-and-focus-unstaged)))
 
-(defun git-pull ()
-  (interactive)
-  (with-magit-output-buffer 'magit-pull))
-
-(defun git-push ()
-  (interactive)
-  (with-magit-output-buffer 'magit-push))
-
 (defun init-magit-status-mode-keybindings ()
   (define-keys evil-normal-state-local-map
     "c" 'magit-commit
@@ -38,8 +30,8 @@
     "gu" 'magit-jump-to-unstaged
     (kbd "TAB") 'magit-toggle-section
     "r" 'magit-refresh
-    ",ps" 'git-push
-    ",pu" 'git-pull))
+    ",ps" 'magit-push
+    ",pu" 'magit-pull))
 
 (add-hook 'magit-status-mode-hook 'init-magit-status-mode-keybindings)
 
