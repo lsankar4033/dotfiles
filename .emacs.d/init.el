@@ -258,8 +258,11 @@
 	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-change-root)
 	    (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
 	    (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
-	    (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)))
+	    (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+	    (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
 (setq-default neo-show-hidden-files t)
+(setq neo-smart-open t) ; always open to directory of current buffer
+(setq neo-theme 'nerd)
 
 ;; yaml-mode
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
