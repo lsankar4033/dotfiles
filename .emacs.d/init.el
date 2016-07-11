@@ -38,6 +38,7 @@
     deft
     elpy
     ess
+    esup
     evil
     evil-leader
     exec-path-from-shell
@@ -207,9 +208,7 @@
 
 ;; exec-from-shell
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs
-   '("PATH")))
+  (exec-path-from-shell-initialize))
 
 ;; clojure
 (require 'clojure-personal)
@@ -247,8 +246,9 @@
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
 
+; NOTE - turned off elpy while I'm not using it
 ;; elpy
-(require 'elpy-personal)
+;(require 'elpy-personal)
 
 ;; neotree
 (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
@@ -282,6 +282,9 @@
 ;; org-page
 (require 'org-page)
 (require 'org-page-personal)
+
+;; esup
+(setq-default user-init-file "~/.emacs.d/init.el")
 
 ;; Custom stuf,
 (custom-set-variables
