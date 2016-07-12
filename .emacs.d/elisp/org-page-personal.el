@@ -1,7 +1,7 @@
 (setq op/repository-directory "~/src/personal-website/")
 (setq op/site-domain "http://lsankar.com/")
 ;; for commenting; disabled for now
-;;(setq op/personal-disqus-shortname "your_disqus_shortname")
+(setq op/personal-disqus-shortname "lsankar4033")
 
 ;; analytics set up at ~/.emacs.secrets file
 ;;(setq op/personal-google-analytics-id "UA-NNNNNNNN-N")
