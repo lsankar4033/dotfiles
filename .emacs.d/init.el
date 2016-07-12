@@ -35,7 +35,6 @@
     clojure-mode-extra-font-locking
     coffee-mode
     company
-    deft
     elpy
     ess
     esup
@@ -227,12 +226,6 @@
 ;; projectile
 (projectile-global-mode)
 (evil-leader/set-key "f" 'projectile-find-file)
-
-;; Deft
-(setq deft-extensions '("txt" "md" "org"))
-(setq deft-directory global-docs-dir)
-(setq deft-recursive t)
-(evil-leader/set-key "v" 'deft)
 
 ;; paredit
 (evil-leader/set-key-for-mode 'clojure-mode
