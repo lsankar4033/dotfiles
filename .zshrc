@@ -1,3 +1,13 @@
+# Profiling code.  Will write profiling stats by command to a file at $HOME/tmp/startlog.${pid} if
+# PROFILE_STARTUP=true
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>$HOME/tmp/startlog.$$
+    setopt xtrace prompt_subst
+fi
+
 # Stuff from bash
 eval "$(rbenv init -)"
 
@@ -87,39 +97,15 @@ alias als="aws s3 ls"
 alias acp="aws s3 cp"
 alias amv="aws s3 mv"
 
-
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.local_profile"
 source "$HOME/.liftoff_profile"
 
 # Set file descriptor limit to 500000
 sudo launchctl limit maxfiles 500000 500000
 ulimit -n 500000
 
-alias rstudio='open -a RStudio'
-
-# Vi-mode
-# TODO - make this work nicely
-#bindkey -v
-
-#function zle-line-init zle-keymap-select {
-#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-#    zle reset-prompt
-#}
-
-#zle -N zle-line-init
-#zle -N zle-keymap-select
-#export KEYTIMEOUT=1
-
-#bindkey -M vicmd '/' history-incremental-search-backward
-#
-
-# yank from zsh vi-mode nicely
-#function vi-yank-pbcopy {
-#  zle vi-yank
-#  echo "$CUTBUFFER" | pbcopy
-#}
-
-#zle -N vi-yank-pbcopy
-#bindkey -M vicmd 'y' vi-yank-pbcopy
+# Profiling code
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    unsetopt xtrace
+    exec 2>&3 3>&-
+fi
