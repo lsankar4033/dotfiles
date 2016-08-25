@@ -14,8 +14,8 @@ eval "$(rbenv init -)"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/lakshmansankar/.oh-my-zsh
 
+# zsh Theme/plugins
 ZSH_THEME="robbyrussell"
-
 plugins=(git lein colored-man colorize cp)
 
 PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -34,6 +34,7 @@ export PATH="$PATH:/usr/local/go/bin"
 
 # android platform-tools
 export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/platform-tools"
+export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/tools"
 
 # general repos
 export REPOS="$HOME/src"
@@ -69,9 +70,6 @@ alias tls="tmux list-sessions"
 alias tattach="tmux attach -t"
 alias tnew="tmux new-session -s"
 alias tkill="tmux kill-session -t"
-
-# Quick history search
-alias hgrep="history |grep"
 
 # Clear out vim swap
 alias cs="rm ~/.vim/tmp/swap/*.swp"

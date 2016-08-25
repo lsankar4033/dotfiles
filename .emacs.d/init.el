@@ -29,6 +29,7 @@
 (defvar my-packages
   '(
     ag
+    android-mode
     auto-complete
     cider
     clojure-mode
@@ -278,6 +279,18 @@
 
 ;; esup
 (setq-default user-init-file "~/.emacs.d/init.el")
+
+;; android-mode
+(custom-set-variables '(android-mode-sdk-dir "~/Library/Android/sdk/platform-tools"))
+
+;; java
+
+; a la Google style guide
+(c-add-style "java-google" '("user" (c-offsets-alist . ((case-label . +)
+                                                        (arglist-intro . ++)
+                                                        (statement-cont . ++)))))
+(add-hook 'java-mode-hook (lambda ()
+			    (c-set-style "java-google")))
 
 ;; Custom stuf,
 (custom-set-variables
