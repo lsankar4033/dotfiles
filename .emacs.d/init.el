@@ -181,6 +181,9 @@
 ;; Toggling debug messages
 (define-key evil-normal-state-map (kbd "C-d") 'toggle-debug-on-error)
 
+;; Don't use tabs by default
+(setq-default indent-tabs-mode nil)
+
 ;;;;
 ;; 4. Package Specific Customization
 ;;
@@ -223,6 +226,16 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Keybinding for using markdownd to preview markdown rendering in browser.
+(defun watch-and-render-markdown ()
+  "Use markdownd to set a watch on the markdown file in the current buffer. Will render in the default
+  browser."
+  (interactive)
+  (shell-command
+   (format "markdownd -w %s >/dev/null &"
+           (shell-quote-argument (buffer-file-name)))))
+(evil-leader/set-key-for-mode 'markdown-mode "d" 'watch-and-render-markdown)
 
 ;; projectile
 (projectile-global-mode)
@@ -272,6 +285,8 @@
 
 ;; html
 (evil-leader/set-key-for-mode 'html-mode "c" 'sgml-close-tag)
+(evil-leader/set-key-for-mode 'html-mode "l" 'sgml-skip-tag-forward)
+(evil-leader/set-key-for-mode 'html-mode "h" 'sgml-skip-tag-backward)
 
 ;; org-page
 (require 'org-page)
@@ -284,13 +299,10 @@
 (custom-set-variables '(android-mode-sdk-dir "~/Library/Android/sdk/platform-tools"))
 
 ;; java
+(require 'java-personal)
 
-; a la Google style guide
-(c-add-style "java-google" '("user" (c-offsets-alist . ((case-label . +)
-                                                        (arglist-intro . ++)
-                                                        (statement-cont . ++)))))
-(add-hook 'java-mode-hook (lambda ()
-			    (c-set-style "java-google")))
+;; less/css mode
+(setq css-indent-offset 2)
 
 ;; Custom stuf,
 (custom-set-variables

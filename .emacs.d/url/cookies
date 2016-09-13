@@ -1,0 +1,16 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '(("www.kayak.com"
+  [url-cookie "Apache" "MoM9hQ-AAABVww1rkY-0e-cu63Jg" "05-Jun-2019 23:50:27.00 GMT" "/" "www.kayak.com" nil]
+  [url-cookie "kayak" "vgMmW_mhKnIC0Wt3vcO2" "08-Sep-2019 23:50:27.00 GMT" "/" "www.kayak.com" nil]
+  [url-cookie "p1.med.token" "KkDWoVlEg_GJbsx8skVwSL" "07-Mar-2017 23:50:27.00 GMT" "/" "www.kayak.com" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

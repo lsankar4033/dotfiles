@@ -107,3 +107,7 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
     exec 2>&3 3>&-
 fi
+
+# Eclipse (for eclim)
+export ECLIPSE_HOME="/Applications/eclipse/Eclipse.app/Contents/Eclipse"
+alias eclimd="$ECLIPSE_HOME/eclimd"
