@@ -48,7 +48,7 @@
   "i" 'org-toggle-inline-images)
 
 (setq org-todo-keywords
-      '((sequence "WAITING" "TODO" "IN PROGRESS" "|" "DONE" "INVALIDATED" "DELEGATED")))
+      '((sequence "WAITING" "TODO" "MUST DO" "IN PROGRESS" "|" "DONE" "INVALIDATED" "DELEGATED")))
 
 ;; spreadsheet bindings
 (evil-leader/set-key-for-mode 'org-mode
