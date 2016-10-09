@@ -78,12 +78,9 @@ alias cs="rm ~/.vim/tmp/swap/*.swp"
 alias dps="drip ps"
 alias dkill="drip kill"
 
-# add ssh identities to the ssh agent
-ssh-add
-
 # increase key repeat rate
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 # to not screw with tmux window names
 DISABLE_AUTO_TITLE=true
@@ -96,7 +93,6 @@ alias acp="aws s3 cp"
 alias amv="aws s3 mv"
 
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.liftoff_profile"
 
 # Set file descriptor limit to 500000
 sudo launchctl limit maxfiles 500000 500000
