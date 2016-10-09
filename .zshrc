@@ -94,10 +94,6 @@ alias amv="aws s3 mv"
 
 source $ZSH/oh-my-zsh.sh
 
-# Set file descriptor limit to 500000
-sudo launchctl limit maxfiles 500000 500000
-ulimit -n 500000
-
 # Profiling code
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
@@ -107,3 +103,5 @@ fi
 # Eclipse (for eclim)
 export ECLIPSE_HOME="/Applications/eclipse/Eclipse.app/Contents/Eclipse"
 alias eclimd="$ECLIPSE_HOME/eclimd"
+
+ssh-add ~/.ssh/id_rsa
