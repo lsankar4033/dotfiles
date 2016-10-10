@@ -105,3 +105,7 @@ export ECLIPSE_HOME="/Applications/eclipse/Eclipse.app/Contents/Eclipse"
 alias eclimd="$ECLIPSE_HOME/eclimd"
 
 ssh-add ~/.ssh/id_rsa
+
+# Python3 as default python
+alias python="python3"
+alias pip="pip3"
