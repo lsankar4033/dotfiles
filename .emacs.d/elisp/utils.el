@@ -55,4 +55,4 @@
     (buffer-substring-no-properties (car position) (cdr position))))
 
 ;; NOTE this should be changed if this moves
-(defconst global-docs-dir "~/src/thought-docs/")
+(defconst global-docs-dir "~/src/thought_docs/")
