@@ -6,7 +6,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-(add-to-list 'load-path "~/.emacs.d/vendor/keylog")
+;(add-to-list 'load-path "~/.emacs.d/vendor/keylog")
 (load "~/.emacs.d/vendor/cljfmt/cljfmt.el")
 
 (require 'utils)
@@ -43,6 +43,7 @@
     evil-leader
     exec-path-from-shell
     fill-column-indicator
+    flycheck
     go-mode
     ido-ubiquitous
     less-css-mode
@@ -248,7 +249,7 @@
   "C-l" 'paredit-forward-slurp-sexp)
 
 ;; keylog
-(require 'keylog)
+;(require 'keylog)
 
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
@@ -256,6 +257,10 @@
 ; NOTE - turned off elpy while I'm not using it
 ;; elpy
 ;(require 'elpy-personal)
+
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(evil-leader/set-key "C-f" 'flycheck-list-errors)
 
 ;; neotree
 (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)

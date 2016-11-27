@@ -36,13 +36,13 @@
 ;; babel bindings
 (evil-leader/set-key-for-mode 'org-mode
   "x" 'org-babel-execute-src-block)
-(setq org-src-tab-acts-natively t)
-(setq org-confirm-babel-evaluate nil)
-(org-babel-do-load-languages 'org-babel-load-languages
-			     '((emacs-lisp . t)
-			       (R . t)
-			       (sql . t)
-			       (sh . t)))
+;(setq org-src-tab-acts-natively t)
+;(setq org-confirm-babel-evaluate nil)
+; (org-babel-do-load-languages 'org-babel-load-languages
+; '((emacs-lisp . t)
+;  (R . t)
+;  (sql . t)
+;  (sh . t)))
 
 (evil-leader/set-key-for-mode 'org-mode
   "i" 'org-toggle-inline-images)
