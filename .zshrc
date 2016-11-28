@@ -41,7 +41,7 @@ export REPOS="$HOME/src"
 alias repos='cd $REPOS'
 
 # thought docs
-alias tdoc='cd $REPOS/thought-docs'
+alias tdoc='cd $REPOS/thought_docs'
 
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
