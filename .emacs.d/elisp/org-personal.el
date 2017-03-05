@@ -5,10 +5,10 @@
 (setq org-startup-indented t)
 
 ;; structure bindings
-(evil-define-key 'normal org-mode-map (kbd "C-j") 'org-demote-subtree)
-(evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
-(evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
-(evil-define-key 'normal org-mode-map (kbd "C-k") 'org-promote-subtree)
+(evil-define-key 'normal org-mode-map (kbd "C-l") 'org-do-demote)
+(evil-define-key 'normal org-mode-map (kbd "C-h") 'org-do-promote)
+(evil-define-key 'normal org-mode-map (kbd "C-S-l") 'org-demote-subtree)
+(evil-define-key 'normal org-mode-map (kbd "C-S-h") 'org-promote-subtree)
 
 ;; todo bindings
 (evil-leader/set-key-for-mode 'org-mode
@@ -33,9 +33,10 @@
   "e" 'org-set-tags-command
   "w" 'org-tags-view)
 
+;; NOTE turn these back on when I need them (and make sure they work)
 ;; babel bindings
-(evil-leader/set-key-for-mode 'org-mode
-  "x" 'org-babel-execute-src-block)
+;(evil-leader/set-key-for-mode 'org-mode
+;  "x" 'org-babel-execute-src-block
 ;(setq org-src-tab-acts-natively t)
 ;(setq org-confirm-babel-evaluate nil)
 ; (org-babel-do-load-languages 'org-babel-load-languages
