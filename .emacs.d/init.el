@@ -308,3 +308,7 @@
 
 ;; less/css mode
 (setq css-indent-offset 2)
+
+
+;; Added by Kite
+(load-file "~/.emacs.d/kite.el")
