@@ -235,6 +235,7 @@ nnoremap <leader>p :call ToggleParedit()<CR><CR>
 
 " Python
 let g:pymode_run_bind="<C-p>"
+let g:pymode_python = 'python3'
 
 " Vim-fireplace.  View last buffer's contents
 nnoremap <leader>e :Last<CR>
