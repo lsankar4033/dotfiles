@@ -6,7 +6,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-;(add-to-list 'load-path "~/.emacs.d/vendor/keylog")
+(load "~/.emacs.d/vendor/looking_glass/looking_glass.el")
 (load "~/.emacs.d/vendor/cljfmt/cljfmt.el")
 
 (require 'utils)
@@ -248,8 +248,8 @@
 (evil-leader/set-key-for-mode 'emacs-lisp-mode
   "C-l" 'paredit-forward-slurp-sexp)
 
-;; keylog
-;(require 'keylog)
+;; looking-glass
+(global-looking-glass-mode)
 
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
@@ -259,6 +259,7 @@
 ;(require 'elpy-personal)
 
 ;; flycheck
+; TODO - uncomment these once I get pylint working without errors again
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (evil-leader/set-key "C-f" 'flycheck-list-errors)
 
@@ -308,7 +309,3 @@
 
 ;; less/css mode
 (setq css-indent-offset 2)
-
-
-;; Added by Kite
-(load-file "~/.emacs.d/kite.el")
