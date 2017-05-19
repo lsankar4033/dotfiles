@@ -8,9 +8,6 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     setopt xtrace prompt_subst
 fi
 
-# Stuff from bash
-eval "$(rbenv init -)"
-
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/lakshmansankar/.oh-my-zsh
 
@@ -20,21 +17,20 @@ plugins=(git lein colored-man colorize cp)
 
 PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# TODO: Useful on servers?
 # JVM opts
 export JVM_OPTS="-Xmx4g -XX:MaxPermSize=256M"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$JAVA_HOME/bin:$PATH"
 
+# TODO: Useful on servers?
 # rbenv
 eval "$(rbenv init -)"
 export PATH="$PATH:/Users/lakshmansankar/.rbenv/shims"
 
+# TODO: Useful on servers?
 # go
 export PATH="$PATH:/usr/local/go/bin"
-
-# android platform-tools
-export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/platform-tools"
-export PATH="$PATH:/Users/lakshmansankar/Library/Android/sdk/tools"
 
 # general repos
 export REPOS="$HOME/src"
@@ -78,6 +74,7 @@ alias cs="rm ~/.vim/tmp/swap/*.swp"
 alias dps="drip ps"
 alias dkill="drip kill"
 
+# TODO: Useful on servers?
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write NSGlobalDomain KeyRepeat -int 1
@@ -109,3 +106,9 @@ ssh-add ~/.ssh/id_rsa
 # Python3 as default python
 alias python="python3"
 alias pip="pip3"
+
+# Directly alias looking_glass until I figure out packaging
+alias lg='python $REPOS/looking-glass/python/lg.py'
+
+# Directly alias cointrak until I figure out packaging
+alias ct='python $REPOS/cointrak/cointrak/ct.py'
