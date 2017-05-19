@@ -148,7 +148,6 @@ nmap <C-b> :bf<CR>
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
 " Plugins assumed:
-" - ag.vim
 " - nerdtree
 " - vim-ansible-yaml
 " - vim-fireplace
@@ -160,16 +159,12 @@ nmap <C-b> :bf<CR>
 " - vim-fugitive
 " - vim-jdaddy
 " - vim-markdown
-" - tagbar
 " - vim-go
 " - vim-json
 " - vim-ruby
 " - vim-surround
 " - paredit.vim
-" - nerdcommenter
 " - supertab
-" - UltiSnips
-" - gitgutter
 
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
@@ -210,18 +205,9 @@ augroup rainbow_parentheses
   autocmd Syntax * RainbowParenthesesLoadBraces
 augroup end
 
-" Ag
-nnoremap <leader>a :Ag
-
-" Tagbar
-nnoremap <leader>f :TagbarToggle<CR>
-
 " Go
 "au Filetype go nmap <leader>g <Plug>(go-run)
 nmap <leader>] :GoDef<CR>
-
-" Comment out a block of code
-nmap <leader>cz <C-v>%<Leader>c<space>
 
 " Paredit
 function ToggleParedit()
@@ -239,9 +225,6 @@ let g:pymode_python = 'python3'
 
 " Vim-fireplace.  View last buffer's contents
 nnoremap <leader>e :Last<CR>
-
-" Slamhound
-nnoremap <leader>sh :Slamhound<CR>
 
 " Piggieback node repl
 nnoremap <leader>n :Piggieback (cljs.repl.node/repl-env)<CR>
