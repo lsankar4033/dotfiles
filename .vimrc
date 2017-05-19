@@ -108,7 +108,9 @@ set colorcolumn=110
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 " Allow yank to copy to system clipboard
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 
 " Ensure the temp dirs exist
 call system("mkdir -p ~/.vim/tmp/swap")
