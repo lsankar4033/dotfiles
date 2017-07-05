@@ -78,8 +78,6 @@ If FILEXT is provided, return files with extension FILEXT instead."
 			  org-file-list) ; add files found to result
 	  (add-to-list 'org-file-list org-file)))))))
 
-(setq org-agenda-files (sa-find-org-file-recursively global-docs-dir))
-
 ;; Make org-indent-mode play nicely with autofill. Taken from this Stackoverflow answer:
 ;; http://stackoverflow.com/questions/14351154/org-mode-outline-level-specific-fill-column-values#
 ;; NOTE this doesn't work yet! I should debug when I get a chance
@@ -104,3 +102,4 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 (add-hook 'org-load-hook 'my-org-mode-hook)
 (add-hook 'org-mode-hook 'my-org-mode-hook)
+(setq org-agenda-files (sa-find-org-file-recursively global-docs-dir))

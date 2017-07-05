@@ -286,8 +286,6 @@
 ;; coffee-script
 (evil-leader/set-key-for-mode 'coffee-mode "c" 'coffee-compile-buffer)
 (evil-leader/set-key-for-mode 'coffee-mode "p" 'coffee-repl)
-(custom-set-variables '(coffee-tab-width 2)
-		      '(coffee-indent-like-python-mode t))
 
 ;; html
 (evil-leader/set-key-for-mode 'html-mode "c" 'sgml-close-tag)
