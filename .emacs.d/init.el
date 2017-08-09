@@ -25,7 +25,7 @@
   (package-refresh-contents))
 
 
-;; Install all of these packages
+;; Attempt installation all of these packages
 (defvar my-packages
   '(
     ag
@@ -36,6 +36,7 @@
     coffee-mode
     company
     elpy
+    enh-ruby-mode
     ess
     esup
     evil
@@ -304,6 +305,13 @@
 
 ;; less/css mode
 (setq css-indent-offset 2)
+
+;; ruby
+;; NOTE: This sets ruby mode properly for a number of filetypes in addition to just '.rb' files
+(add-to-list 'auto-mode-alist
+             '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+(setq ruby-indent-level 2)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
