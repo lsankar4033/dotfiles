@@ -6,8 +6,7 @@
                                                         (statement-cont . +)))))
 
 (defun enable-java-style ()
-  (setq c-basic-offset 2
-        indent-tabs-mode nil)
+  (setq c-basic-offset 2)
   (c-set-style "java-google"))
 
 (add-hook 'java-mode-hook 'enable-java-style)
