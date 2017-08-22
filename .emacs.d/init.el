@@ -45,6 +45,7 @@
     fill-column-indicator
     flycheck
     go-mode
+    haml-mode
     ido-ubiquitous
     less-css-mode
     magit
@@ -302,10 +303,19 @@
 (setq-default user-init-file "~/.emacs.d/init.el")
 
 ;; android-mode
-(custom-set-variables '(android-mode-sdk-dir "~/Library/Android/sdk/platform-tools"))
+
 
 ;; java
 (require 'java-personal)
 
 ;; less/css mode
 (setq css-indent-offset 2)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; haml mode
+(require 'haml-mode)
