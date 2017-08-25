@@ -6,7 +6,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-(load "~/.emacs.d/vendor/looking_glass/looking_glass.el")
+;; (load "~/.emacs.d/vendor/looking_glass/looking_glass.el")
 (load "~/.emacs.d/vendor/cljfmt/cljfmt.el")
 
 (require 'utils)
@@ -29,7 +29,6 @@
 (defvar my-packages
   '(
     ag
-    android-mode
     auto-complete
     cider
     clojure-mode
@@ -44,9 +43,8 @@
     exec-path-from-shell
     fill-column-indicator
     flycheck
-    go-mode
+    grizzl
     haml-mode
-    ido-ubiquitous
     less-css-mode
     magit
     markdown-mode
@@ -55,7 +53,6 @@
     paredit
     projectile
     rainbow-delimiters
-    tagedit
     yaml-mode
 ))
 (dolist (p my-packages)
@@ -240,7 +237,10 @@
 (evil-leader/set-key-for-mode 'markdown-mode "d" 'watch-and-render-markdown)
 
 ;; projectile
+(require 'grizzl)
 (projectile-global-mode)
+(setq projectile-enable-caching t)
+(setq projectile-completion-system 'grizzl)
 (evil-leader/set-key "f" 'projectile-find-file)
 
 ;; paredit
@@ -250,7 +250,7 @@
   "C-l" 'paredit-forward-slurp-sexp)
 
 ;; looking-glass
-(global-looking-glass-mode)
+;; (global-looking-glass-mode)
 
 ;; sql-postgres
 (define-key evil-normal-state-map (kbd "] C-p") 'sql-postgres)
@@ -301,9 +301,6 @@
 
 ;; esup
 (setq-default user-init-file "~/.emacs.d/init.el")
-
-;; android-mode
-
 
 ;; java
 (require 'java-personal)
