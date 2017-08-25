@@ -262,7 +262,6 @@
 ;; flycheck
 ; TODO - uncomment these once I get pylint working without errors again
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(evil-leader/set-key "C-f" 'flycheck-list-errors)
 
 ;; neotree
 (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
@@ -316,3 +315,6 @@
 
 ;; haml mode
 (require 'haml-mode)
+
+;; ag
+(evil-leader/set-key "s" 'ag-project)
