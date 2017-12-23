@@ -54,6 +54,8 @@
     paredit
     projectile
     rainbow-delimiters
+    solidity-mode
+    tagedit
     yaml-mode
 ))
 (dolist (p my-packages)
@@ -312,6 +314,9 @@
              '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
 (setq ruby-indent-level 2)
 
+;; Solidity
+(require 'solidity-mode)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -324,3 +329,12 @@
 
 ;; ag
 (evil-leader/set-key "s" 'ag-project)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (solidity-mode yaml-mode tagedit sql-indent rainbow-delimiters projectile paredit org-page neotree markdown-mode magit lua-mode less-css-mode ido-ubiquitous go-mode flycheck fill-column-indicator exec-path-from-shell evil-vimish-fold evil-leader esup ess enh-ruby-mode elpy coffee-mode clojure-mode-extra-font-locking cider auto-complete android-mode ag))))
