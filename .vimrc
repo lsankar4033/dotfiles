@@ -167,6 +167,7 @@ nmap <C-b> :bf<CR>
 " - vim-surround
 " - paredit.vim
 " - supertab
+" - vim-syntastic
 
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
@@ -224,5 +225,12 @@ nnoremap <leader>p :call ToggleParedit()<CR><CR>
 " Vim-fireplace.  View last buffer's contents
 nnoremap <leader>e :Last<CR>
 
-" Piggieback node repl
-nnoremap <leader>n :Piggieback (cljs.repl.node/repl-env)<CR>
+" vim-syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
