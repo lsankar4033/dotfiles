@@ -101,19 +101,15 @@ fi
 export ECLIPSE_HOME="/Applications/eclipse/Eclipse.app/Contents/Eclipse"
 alias eclimd="$ECLIPSE_HOME/eclimd"
 
-# Python3 as default python
-#alias python="python3"
-#alias pip="pip3"
-
-# Directly alias looking_glass until I figure out packaging
-alias lg='python $REPOS/looking-glass/python/lg.py'
-
-# Directly alias cointrak until I figure out packaging
-alias ct='python $REPOS/cointrak/cointrak/ct.py'
-
 # pyenv virtual-env
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# added by Anaconda3 4.4.0 installer
-export PATH="/Users/lakshmansankar/anaconda3/bin:$PATH"
+# chrome, for headless use
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
+# depot_tools is used by chromium
+export PATH="$REPOS/depot_tools:$PATH"
+
+# used by haskell stack
+export PATH="$HOME/.local/bin:$PATH"
