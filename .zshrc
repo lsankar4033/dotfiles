@@ -65,14 +65,10 @@ alias tattach="tmux attach -t"
 alias tnew="tmux new-session -s"
 alias tkill="tmux kill-session -t"
 
-# Clear out vim swap
-alias cs="rm ~/.vim/tmp/swap/*.swp"
-
 # Drip
 alias dps="drip ps"
 alias dkill="drip kill"
 
-# TODO: Useful on servers?
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write NSGlobalDomain KeyRepeat -int 1
@@ -104,3 +100,7 @@ export PATH="$REPOS/depot_tools:$PATH"
 
 # used by haskell stack
 export PATH="$HOME/.local/bin:$PATH"
+
+# make openSSL visible to compilers
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
