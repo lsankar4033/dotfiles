@@ -17,27 +17,25 @@ plugins=(git lein colored-man colorize cp)
 
 PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# TODO: Useful on servers?
 # JVM opts
 export JVM_OPTS="-Xmx4g -XX:MaxPermSize=256M"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$JAVA_HOME/bin:$PATH"
 
-# TODO: Useful on servers?
 # rbenv
 eval "$(rbenv init -)"
 export PATH="$PATH:/Users/lakshmansankar/.rbenv/shims"
 
-# TODO: Useful on servers?
 # go
 export PATH="$PATH:/usr/local/go/bin"
 
 # general repos
 export REPOS="$HOME/src"
-alias repos='cd $REPOS'
 
-# thought docs
+# special cds
+alias repos='cd $REPOS'
 alias tdoc='cd $REPOS/thought_docs'
+alias dotfiles='cd $REPOS/dotfiles'
 
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
@@ -97,16 +95,9 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     exec 2>&3 3>&-
 fi
 
-# Eclipse (for eclim)
-export ECLIPSE_HOME="/Applications/eclipse/Eclipse.app/Contents/Eclipse"
-alias eclimd="$ECLIPSE_HOME/eclimd"
-
 # pyenv virtual-env
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# chrome, for headless use
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # depot_tools is used by chromium
 export PATH="$REPOS/depot_tools:$PATH"
