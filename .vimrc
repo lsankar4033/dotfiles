@@ -172,13 +172,15 @@ nmap <C-b> :bf<CR>
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_max_files = 50000
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_files = 5000000
-let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_working_path_mode = 'ra' " nearest ancestor of current file with project OR current file's dir
+
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl|output)$',
-  \ 'file': '\.class$',
+  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl|output|.pyenv|.oh-my-zsh|.npm)$',
+  \ 'file': '\v\.(class|so|dll)$',
   \ }
 
 " Vim-clojure-static: Correctly indent compojure and korma macros, etc.
