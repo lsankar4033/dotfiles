@@ -108,9 +108,7 @@ set colorcolumn=110
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 " Allow yank to copy to system clipboard
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+set clipboard=unnamed
 
 " Ensure the temp dirs exist
 call system("mkdir -p ~/.vim/tmp/swap")
@@ -167,6 +165,7 @@ nmap <C-b> :bf<CR>
 " - vim-surround
 " - paredit.vim
 " - supertab
+" - vim-javascript
 
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
@@ -178,7 +177,7 @@ let g:ctrlp_working_path_mode = 'ra' " nearest ancestor of current file with pro
 nnoremap <leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl|output|.pyenv|.oh-my-zsh|.npm)$',
+  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl|output|.pyenv|.oh-my-zsh|.npm|node_modules)$',
   \ 'file': '\v\.(class|so|dll)$',
   \ }
 
