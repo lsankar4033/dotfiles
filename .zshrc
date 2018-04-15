@@ -15,7 +15,7 @@ export ZSH=/Users/lakshmansankar/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 plugins=(git lein colored-man colorize cp)
 
-PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # JVM opts
 export JVM_OPTS="-Xmx4g -XX:MaxPermSize=256M"
@@ -104,3 +104,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # make openSSL visible to compilers
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+# golang
+export GOPATH="$HOME/src/go"
+export PATH="$PATH:$GOPATH/bin"
+
