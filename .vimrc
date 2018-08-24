@@ -124,8 +124,8 @@ set undodir=~/.vim/tmp/undo/
 set backupskip=/tmp/*,/private/tmp/*
 
 " Faster scrolling
-nmap <C-h> 5j
-nmap <C-y> 5k
+nmap <C-j> 5j
+nmap <C-k> 5k
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -166,6 +166,9 @@ nmap <C-b> :bf<CR>
 " - paredit.vim
 " - supertab
 " - vim-javascript
+" - vim-prettier
+" - rust.vim
+" - syntastic
 
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
@@ -209,8 +212,26 @@ augroup rainbow_parentheses
 augroup end
 
 " Go
-"au Filetype go nmap <leader>g <Plug>(go-run)
-nmap <leader>] :GoDef<CR>
+let g:go_fmt_command = "goimports"
+
+let g:go_list_type = "quickfix"
+map <C-l> :cnext<CR>
+map <C-h> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>e :<C-u>call <SID>build_go_files()<CR>
 
 " Paredit
 function ToggleParedit()
@@ -222,5 +243,14 @@ function ToggleParedit()
 endfunction
 nnoremap <leader>p :call ToggleParedit()<CR><CR>
 
-" Vim-fireplace.  View last buffer's contents
-nnoremap <leader>e :Last<CR>
+" Prettier
+autocmd FileType javascript nmap <leader>e :Prettier<CR>
+
+" prettier: print semicolons
+let g:prettier#config#semi = 'true'
+
+" prettier: single quotes over double quotes
+let g:prettier#config#single_quote = 'true'
+
+" syntastic+eslint
+let g:syntastic_javascript_checkers=['eslint']
