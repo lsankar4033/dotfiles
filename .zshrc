@@ -36,6 +36,7 @@ export REPOS="$HOME/src"
 alias repos='cd $REPOS'
 alias tdoc='cd $REPOS/thought_docs'
 alias dotfiles='cd $REPOS/dotfiles'
+alias gorepos='cd $REPOS/go/src/github.com/lsankar4033'
 
 alias sz="source ~/.zshrc"
 alias bef="bundle exec fez"
@@ -108,4 +109,3 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 # golang
 export GOPATH="$HOME/src/go"
 export PATH="$PATH:$GOPATH/bin"
-
