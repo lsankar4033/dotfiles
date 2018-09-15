@@ -1,8 +1,22 @@
-" No brainers
-execute pathogen#infect()
+" Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Vundle plugins
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+call vundle#end()
 filetype plugin indent on
 
-set nocompatible
+" Pathogen
+execute pathogen#infect()
+
 set number
 
 " Causes files edited outside of vim to be re-read within vim automatically
@@ -142,9 +156,6 @@ vnoremap <silent> # :<C-U>
 " Set '.' to be a keyword in word parsing
 set iskeyword-=.
 
-" Go back a file (rather than just a jump spot)
-nmap <C-b> :bf<CR>
-
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
 " Plugins assumed:
@@ -194,7 +205,7 @@ let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                   
 let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc"              " Misc
 
 " Quick do sandboxes for clojure.  Assumes paredit
-nmap <leader>d i#_(do<CR>
+autocmd Filetype clojure nmap <leader>d i#_(do<CR>
 
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
@@ -219,7 +230,8 @@ map <C-l> :cnext<CR>
 map <C-h> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>d :GoDef<CR>
+autocmd FileType go nmap <leader>w :GoDecls<CR>
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -254,3 +266,8 @@ let g:prettier#config#single_quote = 'true'
 
 " syntastic+eslint
 let g:syntastic_javascript_checkers=['eslint']
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-m>"
+let g:UltiSnipsJumpBackwardTrigger="<C-n>"
