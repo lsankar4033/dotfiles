@@ -73,27 +73,6 @@ S.bnda({
     win.doOperation(fullRectOp);
   },// this is temp
 
-  "h:alt,ctrl": function (win) {
-    var cur = win.rect();
-    var full = win.screen().vrect();
-
-    if (cur == rHalfRect(full)) {
-      win.doOperation(fullRectOp);
-    } else {
-      win.doOperation(lHalfRectOp);
-    }
-  },
-  "l:alt,ctrl": function (win) {
-    var cur = win.rect();
-    var full = win.screen().vrect();
-
-    if (cur == lHalfRect(full)) {
-      win.doOperation(fullRectOp);
-    } else {
-      win.doOperation(rHalfRectOp);
-    }
-  },
-
   "[:alt,ctrl": function (win) { win.doOperation(throwScreenLeft(win.screen())); },
   "]:alt,ctrl": function (win) { win.doOperation(throwScreenRight(win.screen())); }
 });
