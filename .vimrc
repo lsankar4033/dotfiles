@@ -1,17 +1,21 @@
-" Vundle
 set nocompatible
 filetype off
 
+" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
-
-" Vundle plugins
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
+Plugin 'dyng/ctrlsf.vim'
 call vundle#end()
+
+" vim-plug
+call plug#begin()
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
 filetype plugin indent on
 
 " Pathogen
@@ -228,7 +232,7 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 map <C-l> :cnext<CR>
 map <C-h> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+nnoremap <leader>c :cclose<CR>
 
 autocmd FileType go nmap <leader>d :GoDef<CR>
 autocmd FileType go nmap <leader>w :GoDecls<CR>
@@ -271,3 +275,12 @@ let g:syntastic_javascript_checkers=['eslint']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-m>"
 let g:UltiSnipsJumpBackwardTrigger="<C-n>"
+
+" FZF
+nnoremap <leader>f :FZF<CR>
+
+"CTRLsf
+nmap <leader>a :CtrlSF -R ""<Left>
+nmap <leader>c :CtrlSFFocus<CR>
+let g:ctrlsf_auto_close = 0
+let g:ctrlsf_confirm_save = 0
