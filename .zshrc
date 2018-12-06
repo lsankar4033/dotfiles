@@ -109,3 +109,17 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 # golang
 export GOPATH="$HOME/src/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lakshmansankar/src/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lakshmansankar/src/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/lakshmansankar/src/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lakshmansankar/src/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Kubernetes TODO: More...
+alias kgp="kubectl get pods"
+alias kgn="kubectl get nodes"
+
+alias cleos='docker exec -it eosio /opt/eosio/bin/cleos --url http://127.0.0.1:7777 --wallet-url http://127.0.0.1:5555'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
