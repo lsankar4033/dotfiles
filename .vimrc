@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'dyng/ctrlsf.vim'
+Plugin 'slashmili/alchemist.vim'
 call vundle#end()
 
 " vim-plug
