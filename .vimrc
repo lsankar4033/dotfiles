@@ -15,6 +15,7 @@ call vundle#end()
 call plug#begin()
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-mix-format'
 call plug#end()
 
 filetype plugin indent on
@@ -285,3 +286,6 @@ nmap <leader>a :CtrlSF -R ""<Left>
 nmap <leader>c :CtrlSFFocus<CR>
 let g:ctrlsf_auto_close = 0
 let g:ctrlsf_confirm_save = 0
+
+" vim-mix-format
+let g:mix_format_on_save = 1
