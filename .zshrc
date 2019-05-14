@@ -7,9 +7,6 @@ plugins=(git lein colorize cp)
 
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# go
-export PATH="$PATH:/usr/local/go/bin"
-
 # general repos
 export REPOS="$HOME/src"
 
@@ -62,22 +59,24 @@ alias amv="aws s3 mv"
 
 source $ZSH/oh-my-zsh.sh
 
-# pyenv virtual-env
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
-
 # depot_tools is used by chromium
 export PATH="$REPOS/depot_tools:$PATH"
 
 # used by haskell stack
 export PATH="$HOME/.local/bin:$PATH"
 
-# make openSSL visible to compilers
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
-# golang
+# go
+export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/src/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# python virtualenv-wrapper. default to python3 for everything
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+ #make openSSL visible to compilers
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
