@@ -33,6 +33,7 @@ alias gbd="git branch -D"
 alias gcb="git checkout -b"
 alias ga="git add"
 alias gaa="git add -A"
+alias grc="git rebase --continue"
 
 # tig shortcuts
 alias tst="tig status"
@@ -42,6 +43,10 @@ alias tls="tmux list-sessions"
 alias tattach="tmux attach -t"
 alias tnew="tmux new-session -s"
 alias tkill="tmux kill-session -t"
+
+# truffle shortcuts
+alias tc="truffle compile"
+alias tt="truffle test"
 
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
