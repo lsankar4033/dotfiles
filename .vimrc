@@ -9,13 +9,13 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'slashmili/alchemist.vim'
+Plugin 'posva/vim-vue'
 call vundle#end()
 
 " vim-plug
 call plug#begin()
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-mix-format'
 call plug#end()
 
 filetype plugin indent on
@@ -238,6 +238,8 @@ nnoremap <leader>c :cclose<CR>
 
 autocmd FileType go nmap <leader>d :GoDef<CR>
 autocmd FileType go nmap <leader>w :GoDecls<CR>
+autocmd FileType go nmap <leader>t :GoAlternate<CR>
+autocmd FileType go nmap <leader>f :GoReferrers<CR>
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -259,7 +261,8 @@ function ToggleParedit()
     let g:paredit_mode=1
   endif
 endfunction
-nnoremap <leader>p :call ToggleParedit()<CR><CR>
+" NOTE: temporarily disabled for prettier
+"nnoremap <leader>p :call ToggleParedit()<CR><CR>
 
 " Prettier
 autocmd FileType javascript nmap <leader>e :Prettier<CR>
@@ -279,7 +282,7 @@ let g:UltiSnipsJumpForwardTrigger="<C-m>"
 let g:UltiSnipsJumpBackwardTrigger="<C-n>"
 
 " FZF
-nnoremap <leader>f :FZF<CR>
+"nnoremap <leader>f :FZF<CR>
 
 "CTRLsf
 nmap <leader>a :CtrlSF -R ""<Left>
@@ -289,3 +292,12 @@ let g:ctrlsf_confirm_save = 0
 
 " vim-mix-format
 let g:mix_format_on_save = 1
+
+" vim-python
+let g:python_highlight_all = 1
+
+" vim-vue : disabling preprocessors to speed things up
+let g:vue_disable_pre_processors=1
+
+" prettier
+nmap <leader>p :Prettier<CR>

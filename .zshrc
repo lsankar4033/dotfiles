@@ -34,6 +34,7 @@ alias gcb="git checkout -b"
 alias ga="git add"
 alias gaa="git add -A"
 alias grc="git rebase --continue"
+alias grh="git reset --hard"
 
 # tig shortcuts
 alias tst="tig status"
@@ -46,6 +47,7 @@ alias tkill="tmux kill-session -t"
 
 # truffle shortcuts
 alias tc="truffle compile"
+alias tm="truffle migrate"
 alias tt="truffle test"
 
 # increase key repeat rate
@@ -74,6 +76,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/src/go"
 export PATH="$PATH:$GOPATH/bin"
+alias gop='cd $GOPATH'
 
 # python virtualenv-wrapper. default to python3 for everything
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
