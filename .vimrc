@@ -179,6 +179,7 @@ let g:ctrlp_custom_ignore = {
 
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
+let NERDTreeIgnore = ['\.bak$']
 
 syntax enable
 
