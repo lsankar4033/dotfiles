@@ -15,6 +15,7 @@ call vundle#end()
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
+Plug 'ajh17/VimCompletesMe'
 call plug#end()
 
 filetype plugin indent on
