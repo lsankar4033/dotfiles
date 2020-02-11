@@ -22,6 +22,7 @@ alias sz="source ~/.zshrc"
 alias gc="git commit"
 alias gpr="git pull --rebase"
 alias gpush="git push"
+alias ghpush="git push heroku master"
 alias gd="git diff"
 alias gl="git log"
 alias gcm="git checkout master"
@@ -88,3 +89,11 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# truffle local dev shortcut
+alias tremigrate="sudo rm build/contracts/* && truffle migrate --reset --compile-all"
+
+# node always in async mode
+alias node="node --experimental-repl-await"
+
+source "$HOME/.local_profile"
