@@ -5,10 +5,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'honza/vim-snippets'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'posva/vim-vue'
 Plugin 'tomlion/vim-solidity'
+Plugin 'isRuslan/vim-es6'
 call vundle#end()
 
 " vim-plug
