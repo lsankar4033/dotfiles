@@ -5,17 +5,16 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'slashmili/alchemist.vim'
 Plugin 'posva/vim-vue'
+Plugin 'tomlion/vim-solidity'
 call vundle#end()
 
 " vim-plug
 call plug#begin()
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 filetype plugin indent on
@@ -107,7 +106,7 @@ set statusline+=%=                            " right align
 set statusline+=%{strftime(\"%a\ %y/%m/%d\ %H:%M:%S\",getftime(expand(\"%:p\")))}\  "time
 set statusline+=%-7.(col:%c%)\ %<%P        " offset
 
-" To allow multi-buffer argdo. Basically this causes abandoned buffers to be 'hidden' instead of unloaded
+" To allow multi-buffer commands. Basically this causes abandoned buffers to be 'hidden' instead of unloaded
 set hidden
 
 " Show extra whitespace
@@ -164,29 +163,6 @@ set iskeyword-=.
 
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
-" Plugins assumed:
-" - nerdtree
-" - vim-ansible-yaml
-" - vim-fireplace
-" - vim-indexed-search
-" - vim-lucius
-" - ctrlp.vim
-" - rainbow_parentheses.vim
-" - vim-clojure-static
-" - vim-fugitive
-" - vim-jdaddy
-" - vim-markdown
-" - vim-go
-" - vim-json
-" - vim-ruby
-" - vim-surround
-" - paredit.vim
-" - supertab
-" - vim-javascript
-" - vim-prettier
-" - rust.vim
-" - syntastic
-
 " Ctrl P
 let g:ctrlp_map = '<leader>r'
 let g:ctrlp_cmd = 'CtrlP'
@@ -201,32 +177,10 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(class|so|dll)$',
   \ }
 
-" Vim-clojure-static: Correctly indent compojure and korma macros, etc.
-let g:clojure_fuzzy_indent_patterns = "with.*,def.*,let.*,send.*,if.*,when.*,partition,cond.*"
-let g:clojure_fuzzy_indent_patterns .= ",GET,POST,PUT,PATCH,DELETE,context"          " Compojure
-let g:clojure_fuzzy_indent_patterns .= ",clone-for"                                  " Enlive
-let g:clojure_fuzzy_indent_patterns .= ",select.*,insert.*,update.*,delete.*,with.*,subselect.*,in.*,upsert" " Korma
-let g:clojure_fuzzy_indent_patterns .= ",fact,facts"                                 " Midje
-let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                        " Lobos
-let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form,assoc"              " Misc
-
-" Quick do sandboxes for clojure.  Assumes paredit
-autocmd Filetype clojure nmap <leader>d i#_(do<CR>
-
 " NERDTree
 map <C-n> :NERDTreeFind<CR>
 
 syntax enable
-
-" Rainbow parens
-" TODO - how can i source my vimrc while maintaining these
-augroup rainbow_parentheses
-  autocmd!
-  autocmd Filetype clojure RainbowParenthesesActivate
-  autocmd Syntax * RainbowParenthesesLoadRound
-  autocmd Syntax * RainbowParenthesesLoadSquare
-  autocmd Syntax * RainbowParenthesesLoadBraces
-augroup end
 
 " Go
 let g:go_fmt_command = "goimports"
@@ -253,45 +207,11 @@ endfunction
 
 autocmd FileType go nmap <leader>e :<C-u>call <SID>build_go_files()<CR>
 
-" Paredit
-function ToggleParedit()
-  if g:paredit_mode
-    let g:paredit_mode=0
-  else
-    let g:paredit_mode=1
-  endif
-endfunction
-" NOTE: temporarily disabled for prettier
-"nnoremap <leader>p :call ToggleParedit()<CR><CR>
-
-" Prettier
-autocmd FileType javascript nmap <leader>e :Prettier<CR>
-
-" prettier: print semicolons
-let g:prettier#config#semi = 'true'
-
-" prettier: single quotes over double quotes
-let g:prettier#config#single_quote = 'true'
-
-" syntastic+eslint
-let g:syntastic_javascript_checkers=['eslint']
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-m>"
-let g:UltiSnipsJumpBackwardTrigger="<C-n>"
-
-" FZF
-"nnoremap <leader>f :FZF<CR>
-
 "CTRLsf
 nmap <leader>a :CtrlSF -R ""<Left>
 nmap <leader>c :CtrlSFFocus<CR>
 let g:ctrlsf_auto_close = 0
 let g:ctrlsf_confirm_save = 0
-
-" vim-mix-format
-let g:mix_format_on_save = 1
 
 " vim-python
 let g:python_highlight_all = 1
@@ -299,5 +219,17 @@ let g:python_highlight_all = 1
 " vim-vue : disabling preprocessors to speed things up
 let g:vue_disable_pre_processors=1
 
-" prettier
-nmap <leader>p :Prettier<CR>
+" JsDoc
+autocmd FileType javascript nmap <leader>d :JsDoc<CR>
+
+" vim-test
+nmap <leader>tf :TestFile<CR>
+nmap <leader>t :TestSuite<CR>
+
+" autopep8
+let g:autopep8_on_save = 1
+let g:autopep8_disable_show_diff=1
+let g:autopep8_max_line_length=110
+
+" folding
+au FileType python set foldmethod=indent
