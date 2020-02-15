@@ -16,6 +16,8 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'ajh17/VimCompletesMe'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'Quramy/tsuquyomi'
 call plug#end()
 
 filetype plugin indent on
@@ -184,19 +186,6 @@ let NERDTreeIgnore = ['\.bak$']
 
 syntax enable
 
-" Go
-let g:go_fmt_command = "goimports"
-
-let g:go_list_type = "quickfix"
-map <C-l> :cnext<CR>
-map <C-h> :cprevious<CR>
-nnoremap <leader>c :cclose<CR>
-
-autocmd FileType go nmap <leader>d :GoDef<CR>
-autocmd FileType go nmap <leader>w :GoDecls<CR>
-autocmd FileType go nmap <leader>t :GoAlternate<CR>
-autocmd FileType go nmap <leader>f :GoReferrers<CR>
-
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -235,3 +224,21 @@ let g:autopep8_max_line_length=110
 
 " folding
 au FileType python set foldmethod=indent
+
+" vim-go
+let g:go_version_warning = 0
+let g:go_fmt_command = "goimports"
+
+let g:go_list_type = "quickfix"
+map <C-l> :cnext<CR>
+map <C-h> :cprevious<CR>
+nnoremap <leader>c :cclose<CR>
+
+autocmd FileType go nmap <leader>d :GoDef<CR>
+autocmd FileType go nmap <leader>w :GoDecls<CR>
+autocmd FileType go nmap <leader>t :GoAlternate<CR>
+autocmd FileType go nmap <leader>f :GoReferrers<CR>
+
+" tsuquyomi
+autocmd FileType typescript nmap <leader>d :TsuDefinition<CR>
+autocmd FileType typescript nmap <leader>w :TsuReferences<CR>
