@@ -97,3 +97,7 @@ alias tremigrate="sudo rm build/contracts/* && truffle migrate --reset --compile
 alias node="node --experimental-repl-await"
 
 source "$HOME/.local_profile"
+
+# for bazel
+export PATH="$PATH:$HOME/bin"
+alias bazel="bazelisk"
