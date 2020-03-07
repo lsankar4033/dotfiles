@@ -10,6 +10,8 @@ var relaunch = S.op("relaunch")
 // Focus commands
 var focusLeft = S.op("focus", {"direction": "left"});
 var focusRight = S.op("focus", {"direction": "right"});
+var focusDown = S.op("focus", {"direction": "down"});
+var focusUp = S.op("focus", {"direction": "up"});
 
 var hint = S.op("hint", {"characters": "ASDFGHJKL"});
 
@@ -66,6 +68,8 @@ S.bnda({
   "j:ctrl,shift": relaunch,
   "[:alt": focusLeft,
   "]:alt": focusRight,
+  "j:alt": focusDown,
+  "k:alt": focusUp,
 
   "e:alt": hint,
 
@@ -74,7 +78,7 @@ S.bnda({
   },// this is temp
 
   "[:alt,ctrl": function (win) { win.doOperation(throwScreenLeft(win.screen())); },
-  "]:alt,ctrl": function (win) { win.doOperation(throwScreenRight(win.screen())); }
+  "]:alt,ctrl": function (win) { win.doOperation(throwScreenRight(win.screen())); },
 });
 
 S.log("Finished config");
