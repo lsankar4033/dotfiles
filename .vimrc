@@ -9,6 +9,10 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'posva/vim-vue'
 Plugin 'tomlion/vim-solidity'
 Plugin 'isRuslan/vim-es6'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 call vundle#end()
 
 " vim-plug
@@ -236,7 +240,6 @@ nnoremap <leader>c :cclose<CR>
 
 autocmd FileType go nmap <leader>d :GoDef<CR>
 autocmd FileType go nmap <leader>w :GoDecls<CR>
-autocmd FileType go nmap <leader>t :GoAlternate<CR>
 autocmd FileType go nmap <leader>f :GoReferrers<CR>
 
 " tsuquyomi
