@@ -19,9 +19,9 @@ call vundle#end()
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
-Plug 'ajh17/VimCompletesMe'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Quramy/tsuquyomi'
+Plug 'tell-k/vim-autopep8'
 call plug#end()
 
 filetype plugin indent on
@@ -232,8 +232,8 @@ au FileType python set foldmethod=indent
 " vim-go
 let g:go_version_warning = 0
 let g:go_fmt_command = "goimports"
-
 let g:go_list_type = "quickfix"
+
 map <C-l> :cnext<CR>
 map <C-h> :cprevious<CR>
 nnoremap <leader>c :cclose<CR>
