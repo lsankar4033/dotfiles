@@ -14,7 +14,6 @@ export REPOS="$HOME/src"
 alias repos='cd $REPOS'
 alias tdoc='cd $REPOS/thought_docs'
 alias dotfiles='cd $REPOS/dotfiles'
-alias gorepos='cd $REPOS/go/src/github.com/lsankar4033'
 
 alias sz="source ~/.zshrc"
 
@@ -50,6 +49,7 @@ alias tkill="tmux kill-session -t"
 alias tc="truffle compile"
 alias tm="truffle migrate"
 alias tt="truffle test"
+alias tremigrate="sudo rm build/contracts/* && truffle migrate --reset --compile-all"
 
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
@@ -78,20 +78,19 @@ export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/src/go"
 export PATH="$PATH:$GOPATH/bin"
 alias gop='cd $GOPATH'
+alias gorepos='cd $REPOS/go/src'
+alias gogit='cd $REPOS/go/src/github.com'
 
 # python virtualenv-wrapper. default to python3 for everything
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
- #make openSSL visible to compilers
+# make openSSL visible to compilers
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# truffle local dev shortcut
-alias tremigrate="sudo rm build/contracts/* && truffle migrate --reset --compile-all"
 
 # node always in async mode
 alias node="node --experimental-repl-await"
@@ -101,3 +100,6 @@ source "$HOME/.local_profile"
 # for bazel
 export PATH="$PATH:$HOME/bin"
 alias bazel="bazelisk"
+
+# copy last cmd to system clipboard
+alias lc='fc -ln -1 | awk "{\$1=\$1}1" ORS="" | pbcopy'
