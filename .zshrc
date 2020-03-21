@@ -5,7 +5,11 @@ export ZSH=/Users/lakshmansankar/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 plugins=(git lein colorize cp)
 
+# basic PATH additions
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# relaod this file
+alias sz="source ~/.zshrc"
 
 # general repos
 export REPOS="$HOME/src"
@@ -14,8 +18,6 @@ export REPOS="$HOME/src"
 alias repos='cd $REPOS'
 alias tdoc='cd $REPOS/thought_docs'
 alias dotfiles='cd $REPOS/dotfiles'
-
-alias sz="source ~/.zshrc"
 
 # git shortcuts
 alias gc="git commit"
