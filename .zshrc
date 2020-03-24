@@ -105,3 +105,6 @@ alias bazel="bazelisk"
 
 # copy last cmd to system clipboard
 alias lc='fc -ln -1 | awk "{\$1=\$1}1" ORS="" | pbcopy'
+
+# use venv python for IPython (requires IPython installed in venv)
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
