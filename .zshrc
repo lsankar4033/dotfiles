@@ -57,6 +57,11 @@ alias tremigrate="sudo rm build/contracts/* && truffle migrate --reset --compile
 alias dps="docker ps -a"
 alias drm="docker rm"
 alias dcp="docker cp"
+alias dcreate="docker create"
+alias dstart="docker start"
+alias dlogs="docker logs"
+alias dpull="docker pull"
+alias dpush="docker push"
 
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
