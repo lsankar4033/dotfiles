@@ -118,3 +118,9 @@ alias lc='fc -ln -1 | awk "{\$1=\$1}1" ORS="" | pbcopy'
 
 # use venv python for IPython (requires IPython installed in venv)
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
+# check available ports alias
+pidportfunction() {
+  lsof -n -i4TCP:$1 | grep LISTEN
+}
+alias lsp=pidportfunction
