@@ -22,6 +22,7 @@ Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Quramy/tsuquyomi'
 Plug 'tell-k/vim-autopep8'
+Plug 'vim-python/python-syntax'
 call plug#end()
 
 filetype plugin indent on
