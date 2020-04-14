@@ -62,6 +62,11 @@ alias dstart="docker start"
 alias dlogs="docker logs"
 alias dpull="docker pull"
 alias dpush="docker push"
+alias dbuild="docker build"
+alias drun="docker run"
+alias dinspect="docker inspect"
+alias dhistory="docker history"
+alias dls="docker image ls"
 
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
