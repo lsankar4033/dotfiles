@@ -23,6 +23,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Quramy/tsuquyomi'
 Plug 'tell-k/vim-autopep8'
 Plug 'vim-python/python-syntax'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 filetype plugin indent on
