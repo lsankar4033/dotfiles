@@ -56,9 +56,11 @@ alias tremigrate="sudo rm build/contracts/* && truffle migrate --reset --compile
 # docker shortcuts
 alias dps="docker ps -a"
 alias drm="docker rm"
+alias drmi="docker rmi"
 alias dcp="docker cp"
 alias dcreate="docker create"
 alias dstart="docker start"
+alias dstop="docker stop"
 alias dlogs="docker logs"
 alias dpull="docker pull"
 alias dpush="docker push"
@@ -67,6 +69,12 @@ alias drun="docker run"
 alias dinspect="docker inspect"
 alias dhistory="docker history"
 alias dls="docker image ls"
+
+# build, run, and log in one go
+build_run_log_image() {
+  docker build -t $1 -f $2 $3 && docker run -it $1
+}
+alias dbrl=build_run_log_image
 
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
