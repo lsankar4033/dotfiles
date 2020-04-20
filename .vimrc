@@ -20,7 +20,7 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
 Plug 'tell-k/vim-autopep8'
 Plug 'vim-python/python-syntax'
 Plug 'leafgarland/typescript-vim'
