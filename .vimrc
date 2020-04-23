@@ -234,6 +234,12 @@ autocmd FileType go nmap <leader>w :GoDecls<CR>
 autocmd FileType go nmap <leader>f :GoReferrers<CR>
 autocmd FileType go nmap <leader>e :GoRename<CR>
 
-" tsuquyomi
-autocmd FileType typescript nmap <leader>d :TsuDefinition<CR>
-autocmd FileType typescript nmap <leader>w :TsuReferences<CR>
+" better grep+quickfix
+set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
