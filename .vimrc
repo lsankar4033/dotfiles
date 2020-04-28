@@ -245,3 +245,6 @@ augroup quickfix
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
+
+" jedi
+let g:jedi#usages_command = "<leader>f"
