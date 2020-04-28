@@ -25,6 +25,7 @@ Plug 'tell-k/vim-autopep8'
 Plug 'vim-python/python-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'tmhedberg/SimpylFold'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 filetype plugin indent on
