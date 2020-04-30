@@ -23,9 +23,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 Plug 'tell-k/vim-autopep8'
 Plug 'vim-python/python-syntax'
-Plug 'leafgarland/typescript-vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
+Plug 'Quramy/tsuquyomi'
 call plug#end()
 
 filetype plugin indent on
@@ -248,3 +248,8 @@ augroup END
 
 " jedi
 let g:jedi#usages_command = "<leader>f"
+let g:jedi#rename_command = "<leader>e"
+
+" tsuquyomi
+autocmd FileType typescript nmap <leader>d :TsuDefinition<CR>
+autocmd FileType typescript nmap <leader>f :TsuReferences<CR>
