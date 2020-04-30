@@ -173,7 +173,7 @@ vnoremap <silent> # :<C-U>
 set iskeyword-=.
 
 " folding with the spacebar
-nnoremap <space> za
+nnoremap <tab> za
 
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
