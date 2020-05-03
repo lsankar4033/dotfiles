@@ -175,6 +175,9 @@ set iskeyword-=.
 " folding with the spacebar
 nnoremap <tab> za
 
+" default unfolded when opening files
+set foldlevel=99
+
 " ----------------------------------------- Plugin Settings ----------------------------------------------
 
 " Ctrl P
