@@ -195,8 +195,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " NERDTree
-map <C-n> :NERDTreeFind<CR>
-let NERDTreeIgnore = ['\.bak$', '__pycache__', '\.pytest_cache']
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.bak$', '__pycache__', '\.pytest_cache', '\.pyc$']
 
 syntax enable
 
