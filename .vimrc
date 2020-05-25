@@ -26,6 +26,7 @@ Plug 'vim-python/python-syntax'
 Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 filetype plugin indent on
@@ -256,3 +257,10 @@ let g:jedi#rename_command = "<leader>e"
 " tsuquyomi
 autocmd FileType typescript nmap <leader>d :TsuDefinition<CR>
 autocmd FileType typescript nmap <leader>f :TsuReferences<CR>
+
+" racer
+let g:racer_cmd = "/Users/lakshmansankar/.cargo/bin/racer"
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <leader>d <Plug>(rust-def)
+augroup END
