@@ -76,6 +76,12 @@ build_run_log_image() {
 }
 alias dbrl=build_run_log_image
 
+# stop and rm container
+stop_and_remove_container() {
+  docker stop $1 && docker rm $1
+}
+alias dsrm=stop_and_remove_container
+
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write NSGlobalDomain KeyRepeat -int 1
