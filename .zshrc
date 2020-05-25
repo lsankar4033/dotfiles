@@ -144,8 +144,8 @@ pidportfunction() {
 }
 alias lsp=pidportfunction
 
-# create python workspace
-pyspace() {
+# create python experimental space
+pythonexperiment() {
   mkdir $1 && \
     cd $1 && \
     mkvirtualenv --python=python3 $1 && \
@@ -153,4 +153,4 @@ pyspace() {
     touch test_main.py && \
     pip3 install pytest
 }
-alias pysp=pyspace
+alias pyexp=pythonexperiment
