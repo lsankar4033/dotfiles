@@ -143,3 +143,14 @@ pidportfunction() {
   lsof -n -i4TCP:$1 | grep LISTEN
 }
 alias lsp=pidportfunction
+
+# create python workspace
+pyspace() {
+  mkdir $1 && \
+    cd $1 && \
+    mkvirtualenv --python=python3 $1 && \
+    touch main.py && \
+    touch test_main.py && \
+    pip3 install pytest
+}
+alias pysp=pyspace
