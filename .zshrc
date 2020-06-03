@@ -69,6 +69,7 @@ alias drun="docker run"
 alias dinspect="docker inspect"
 alias dhistory="docker history"
 alias dls="docker image ls"
+alias drme="drm $(dps -q)"
 
 # build, run, and log in one go
 build_run_log_image() {
