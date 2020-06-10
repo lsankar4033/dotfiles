@@ -70,6 +70,7 @@ alias dinspect="docker inspect"
 alias dhistory="docker history"
 alias dls="docker image ls"
 alias drme="drm $(dps -q)"
+alias drmin="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
 
 # build, run, and log in one go
 build_run_log_image() {
@@ -82,6 +83,12 @@ stop_and_remove_container() {
   docker stop $1 && docker rm $1
 }
 alias dsrm=stop_and_remove_container
+
+# run bash on a running container
+docker_run_bash() {
+  docker exec -it $1 bash
+}
+alias dbash=docker_run_bash
 
 # increase key repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
@@ -155,3 +162,6 @@ pythonexperiment() {
     pip3 install pytest
 }
 alias pyexp=pythonexperiment
+
+# prepare for distribution using setuptools
+alias pydist=python setup.py sdist bdist_wheel
