@@ -28,6 +28,8 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'racer-rust/vim-racer'
+Plug 'meck/vim-brittany'
+Plug 'itchyny/vim-haskell-indent'
 call plug#end()
 
 filetype plugin indent on
@@ -214,9 +216,6 @@ let g:python_highlight_all = 1
 " vim-vue : disabling preprocessors to speed things up
 let g:vue_disable_pre_processors=1
 
-" JsDoc
-autocmd FileType javascript nmap <leader>d :JsDoc<CR>
-
 " vim-test
 nmap <leader>tf :TestFile<CR>
 nmap <leader>t :TestSuite<CR>
@@ -265,3 +264,6 @@ augroup Racer
     autocmd!
     autocmd FileType rust nmap <leader>d <Plug>(rust-def)
 augroup END
+
+" vim-brittany
+let g:brittany_on_save = 1

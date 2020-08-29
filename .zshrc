@@ -167,6 +167,4 @@ pythonexperiment() {
     pip3 install pytest
 }
 alias pyexp=pythonexperiment
-
-# prepare for distribution using setuptools
-alias pydist=python setup.py sdist bdist_wheel
+[ -f "/Users/lakshmansankar/.ghcup/env" ] && source "/Users/lakshmansankar/.ghcup/env" # ghcup-env
