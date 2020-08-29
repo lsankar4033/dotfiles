@@ -72,6 +72,11 @@ alias dls="docker image ls"
 alias drme="drm $(dps -q)"
 alias drmin="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
 
+docker_bash() {
+  docker exec -it $1 /bin/bash
+}
+alias dbash=docker_bash
+
 # build, run, and log in one go
 build_run_log_image() {
   docker build -t $1 -f $2 $3 && docker run -it $1
