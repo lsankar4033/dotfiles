@@ -30,6 +30,7 @@ Plug 'Quramy/tsuquyomi'
 Plug 'racer-rust/vim-racer'
 Plug 'meck/vim-brittany'
 Plug 'itchyny/vim-haskell-indent'
+Plug 'tpope/vim-fireplace'
 call plug#end()
 
 filetype plugin indent on
@@ -267,3 +268,6 @@ augroup END
 
 " vim-brittany
 let g:brittany_on_save = 1
+
+" vim-fireplace
+autocmd FileType clojure nmap <leader>e :Eval<CR>
