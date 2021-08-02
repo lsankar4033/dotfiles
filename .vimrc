@@ -31,6 +31,9 @@ Plug 'racer-rust/vim-racer'
 Plug 'meck/vim-brittany'
 Plug 'itchyny/vim-haskell-indent'
 Plug 'tpope/vim-fireplace'
+Plug 'venantius/vim-cljfmt'
+Plug 'guns/vim-sexp'
+Plug 'iden3/vim-circom-syntax'
 call plug#end()
 
 filetype plugin indent on
