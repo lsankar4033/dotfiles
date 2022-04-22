@@ -274,3 +274,7 @@ let g:brittany_on_save = 1
 
 " vim-fireplace
 autocmd FileType clojure nmap <leader>e :Eval<CR>
+
+" for now?
+set tabstop=4
+set shiftwidth=4
