@@ -126,9 +126,9 @@ alias gorepos='cd $REPOS/go/src'
 alias gogit='cd $REPOS/go/src/github.com'
 
 # python virtualenv-wrapper. default to python3 for everything
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+#export WORKON_HOME=$HOME/.virtualenvs
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # make openSSL visible to compilers
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
@@ -188,3 +188,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:/Users/lakshmansankar/.foundry/bin"
+
+export DISCORD_TOKEN="OTY2OTg1MDgyOTg2NDYzMjQy.YmJtCQ.PlH0kzJ5fSIXU88NBgFabtrKNXM"
+
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+

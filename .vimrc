@@ -10,8 +10,6 @@ Plugin 'posva/vim-vue'
 Plugin 'tomlion/vim-solidity'
 Plugin 'isRuslan/vim-es6'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'zah/nim.vim'
 call vundle#end()
@@ -198,7 +196,7 @@ let g:ctrlp_working_path_mode = 'ra' " nearest ancestor of current file with pro
 nnoremap <leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl|output|.pyenv|.oh-my-zsh|.npm|node_modules|__pycache__|.pytest_cache)$',
+  \ 'dir': '\v[\/](\.git|\.hg|target|.cljs_node_repl|.cljs_rhino_repl|output|.oh-my-zsh|.npm|node_modules|__pycache__|.pytest_cache)$',
   \ 'file': '\v\.(class|so|dll)$',
   \ }
 
