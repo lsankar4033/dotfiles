@@ -136,9 +136,6 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# node always in async mode
-alias node="node --experimental-repl-await"
-
 source "$HOME/.local_profile"
 
 # for bazel
@@ -172,12 +169,6 @@ alias pyexp=pythonexperiment
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 if [ -e /Users/lakshmansankar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/lakshmansankar/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/lakshmansankar/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lakshmansankar/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/lakshmansankar/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lakshmansankar/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Solana
 export PATH="/Users/lakshmansankar/src/solana/solana-1.8.5"/bin:"$PATH"
 
@@ -189,7 +180,45 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$PATH:/Users/lakshmansankar/.foundry/bin"
 
-export DISCORD_TOKEN="OTY2OTg1MDgyOTg2NDYzMjQy.YmJtCQ.PlH0kzJ5fSIXU88NBgFabtrKNXM"
-
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
+
+# pnpm
+export PNPM_HOME="/Users/lakshmansankar/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/lakshmansankar/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/lakshmansankar/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/lakshmansankar/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/lakshmansankar/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/lakshmansankar/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/lakshmansankar/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lakshmansankar/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lakshmansankar/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/lakshmansankar/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lakshmansankar/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# local to whalewatcher job for now
+export GOOGLE_APPLICATION_CREDENTIALS="./.secret/google-storage-creds.json"
+
+source "$HOME/.secrets.zshrc.sh"
