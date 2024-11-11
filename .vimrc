@@ -32,6 +32,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'venantius/vim-cljfmt'
 Plug 'guns/vim-sexp'
 Plug 'iden3/vim-circom-syntax'
+Plug 'petRUShka/vim-sage'
 call plug#end()
 
 filetype plugin indent on
