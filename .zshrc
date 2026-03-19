@@ -63,3 +63,11 @@ source "$HOME/.identity.zshrc.sh"
 
 # opencode
 export PATH=/Users/lakshmansankar/.opencode/bin:$PATH
+
+# ARM Homebrew (last so it takes highest PATH priority)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="$PATH:/Users/lakshmansankar/.foundry/bin"
+
+# jujutsu init
+alias jjinit="jj git init --colocate"
