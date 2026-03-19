@@ -71,3 +71,10 @@ export PATH="$PATH:/Users/lakshmansankar/.foundry/bin"
 
 # jujutsu init
 alias jjinit="jj git init --colocate"
+alias jjl="jj log"
+alias jjd="jj describe"
+alias jjn="jj new"
+alias jjst="jj status"
+alias jju="jj undo"
+alias jje="jj edit"
+alias jjsq="jj squash"
