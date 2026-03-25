@@ -79,3 +79,6 @@ alias jju="jj undo"
 alias jje="jj edit"
 alias jjsq="jj squash"
 alias jjb="jj bookmark"
+alias jjbc="jj bookmark create"
+jjbt() { jj bookmark track "$1" --remote=origin; }
+jjbp() { jj git push --bookmark "$1"; }
