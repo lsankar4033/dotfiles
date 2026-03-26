@@ -89,6 +89,6 @@ jjbpush() {
   fi
   jj bookmark create "$name" && \
   jj git push --bookmark "$name" && \
-  jj bookmark track "${name}@origin"
+  jj bookmark track "$name" --remote=origin
 }
 
