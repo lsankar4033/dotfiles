@@ -81,3 +81,14 @@ alias jjsq="jj squash"
 alias jjb="jj bookmark"
 alias jjbc="jj bookmark create"
 
+jjbpush() {
+  local name="$1"
+  if [[ -z "$name" ]]; then
+    echo "Usage: jjbpush <bookmark-name>"
+    return 1
+  fi
+  jj bookmark create "$name" && \
+  jj git push --bookmark "$name" && \
+  jj bookmark track "${name}@origin"
+}
+
