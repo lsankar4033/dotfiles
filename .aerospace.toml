@@ -5,24 +5,22 @@ start-at-login = true
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'horizontal'
 
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B",
-                         "C", "D", "E", "F", "G", "I", "M", "N", "O", "P", "Q",
-                         "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+persistent-workspaces = ["1", "2", "3"]
 
 [mode.main.binding]
 # Switch between workspaces
-cmd-rightSquareBracket = 'workspace next'
-cmd-leftSquareBracket = 'workspace prev'
+ctrl-rightSquareBracket = 'workspace next'
+ctrl-leftSquareBracket = 'workspace prev'
 
 # Switch between windows in active workspace
 alt-rightSquareBracket = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace right'
 alt-leftSquareBracket = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace left'
 
 # Switch to workspace by number
-cmd-1 = 'workspace 1'
-cmd-2 = 'workspace 2'
-cmd-3 = 'workspace 3'
-cmd-4 = 'workspace 4'
+ctrl-1 = 'workspace 1'
+ctrl-2 = 'workspace 2'
+ctrl-3 = 'workspace 3'
+ctrl-4 = 'workspace 4'
 
 # Move focused window to workspace
 alt-shift-1 = 'move-node-to-workspace 1'
