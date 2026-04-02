@@ -4,4 +4,4 @@
 
 .ipython
 
-.claude/
+.claude/settings.local.json

@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(jjs -h 2>&1 | head -20)"
-    ]
-  }
-}
