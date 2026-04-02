@@ -3,7 +3,7 @@ export ZSH=/Users/lakshmansankar/.oh-my-zsh
 
 # zsh Theme/plugins
 ZSH_THEME="robbyrussell"
-plugins=(git lein colorize cp)
+plugins=(colorize cp)
 
 # basic PATH additions
 export PATH="$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -89,6 +89,4 @@ jjbpush() {
   fi
   jj bookmark create "$name" && \
   jj git push --bookmark "$name" && \
-  jj bookmark track "$name" --remote=origin
 }
-
