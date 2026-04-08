@@ -87,6 +87,10 @@ jjbpush() {
     echo "Usage: jjbpush <bookmark-name>"
     return 1
   fi
-  jj bookmark create "$name" && \
-  jj git push --bookmark "$name" && \
+  if jj bookmark list "$name" 2>/dev/null | grep -q "$name"; then
+    jj bookmark set "$name"
+  else
+    jj bookmark create "$name"
+  fi && \
+  jj git push --bookmark "$name"
 }
